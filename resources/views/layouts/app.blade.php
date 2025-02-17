@@ -67,7 +67,8 @@
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">
+                <a class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+
                         <span class="iconify" data-icon="tabler:home" data-width="22"></span>
                         Beranda
                     </a>
@@ -110,10 +111,21 @@
         <div class="flex-grow-1">
             <div class="navbar navbar-expand-lg navbar-light bg-white">
                 <div class="container-fluid d-flex justify-content-end">
-                    <span class="navbar-brand me-2">Admin</span>
-                    <span class="iconify" data-icon="fa6-solid:user" data-width="20" data-height="20"></span>
+                <span class="navbar-brand me-2">Admin</span>
+                <!-- Dropdown untuk Logout -->
+                <div class="dropdown">
+                    <span class="iconify dropdown-toggle" data-bs-toggle="dropdown" data-icon="fa6-solid:user" data-width="20" data-height="20" style="cursor: pointer;"></span>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
         <!-- Topbar End -->
 
             <!-- Section Start -->
