@@ -17,3 +17,23 @@ Route::get('/', function () {
 //         return view('admin.dashboard');
 //     })->name('admin.dashboard');
 // });
+
+Route::get('/picketTeach', function () {
+    return view('admin.picketTeach'); // Tambahkan 'admin.' karena ada di dalam folder admin
+})->name('picketTeach');
+
+Route::get('/tugas', function () {
+    return view('admin.task');
+})->name('tugas');
+
+Route::get('/guru', function () {
+    return view('admin.teacher'); // Sesuaikan dengan lokasi file Blade
+})->name('guru');
+
+Route::get('/rekap', function () {
+    return view('admin.recap'); // Sesuaikan dengan lokasi file Blade
+})->name('rekap');
+
+Route::get('/manageUser', function () {
+    return view('admin.manageUser'); // Sesuaikan dengan lokasi file Blade
+})->name('manageUser');

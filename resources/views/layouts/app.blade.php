@@ -19,7 +19,7 @@
             height: 100vh;
             width: 250px;
             padding: 20px;
-        } 
+        }
 
         /* Menu Styling */
         .nav-link {
@@ -31,6 +31,7 @@
             text-decoration: none;
             transition: background 0.1s;
         }
+
         .navbar .container-fluid {
             display: flex;
             justify-content: flex-end;
@@ -39,8 +40,8 @@
         }
 
         .nav-link:hover {
-            color: white ;
-            background-color: inherit ;
+            color: white;
+            background-color: inherit;
         }
 
         /* Ikon Styling */
@@ -66,37 +67,37 @@
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
-                    <a class="nav-link" href="#" onclick="setActive(this)">
+                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">
                         <span class="iconify" data-icon="tabler:home" data-width="22"></span>
                         Beranda
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link" href="#" onclick="setActive(this)">
+                    <a class="nav-link {{ request()->is('tugas') ? 'active' : '' }}" href="{{ route('tugas') }}">
                         <span class="iconify" data-icon="tabler:clipboard-list" data-width="22"></span>
                         Tugas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link" href="#" onclick="setActive(this)">
+                    <a class="nav-link {{ request()->is('guru') ? 'active' : '' }}" href="{{ route('guru') }}">
                         <span class="iconify" data-icon="tabler:user" data-width="22"></span>
                         Guru
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link" href="#" onclick="setActive(this)">
+                    <a class="nav-link {{ request()->is('picketTeach') ? 'active' : '' }}" href="{{ route('picketTeach') }}">
                         <span class="iconify" data-icon="tabler:users" data-width="22"></span>
                         Guru Piket
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link" href="#" onclick="setActive(this)">
+                    <a class="nav-link {{ request()->is('rekap') ? 'active' : '' }}" href="{{ route('rekap') }}">
                         <span class="iconify" data-icon="tabler:report" data-width="22"></span>
                         Rekap
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link" href="#" onclick="setActive(this)">
+                    <a class="nav-link {{ request()->is('manageUser') ? 'active' : '' }}" href="{{ route('manageUser') }}">
                         <span class="iconify" data-icon="tabler:settings" data-width="22"></span>
                         Manage User
                     </a>
@@ -115,8 +116,6 @@
             </div>
         <!-- Topbar End -->
 
-            <!-- Topbar End -->
-
             <!-- Section Start -->
             <div class="container mt-4 bg-light" style="width: 96%; height: 85%; border-radius: 10px;">
                 @yield('content')
@@ -127,14 +126,6 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        function setActive(clickedElement) {
-            let links = document.querySelectorAll('.nav-link');
-            links.forEach(link => link.classList.remove('active')); // Hapus class active dari semua link
-            clickedElement.classList.add('active'); // Tambahkan class active ke link yang diklik
-        }
-    </script>
 </body>
 
 </html>
