@@ -21,6 +21,7 @@
                 'Edi Sutrisno, S.Pd.',
                 'Finalia Meiriana, S.Pd.',
                 'Elly Andriani, MK., S.T.'
+                'Lutfi'
             ];
         @endphp
         @foreach($gurus as $index => $guru)
