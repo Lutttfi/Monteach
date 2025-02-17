@@ -19,7 +19,7 @@
             height: 100vh;
             width: 250px;
             padding: 20px;
-        }
+        } 
 
         /* Menu Styling */
         .nav-link {
@@ -29,7 +29,7 @@
             padding: 10px;
             border-radius: 10px;
             text-decoration: none;
-            transition: background 0.3s;
+            transition: background 0.1s;
         }
         .navbar .container-fluid {
             display: flex;
@@ -38,6 +38,10 @@
             gap: 10px;
         }
 
+        .nav-link:hover {
+            color: white ;
+            background-color: inherit ;
+        }
 
         /* Ikon Styling */
         .nav-link .iconify {
@@ -104,13 +108,13 @@
         <!-- Topbar Start -->
         <div class="flex-grow-1">
             <div class="navbar navbar-expand-lg navbar-light bg-white">
-                <div class="navbar navbar-expand-lg navbar-light " style="background-color: white;">
-                    <div class="container-fluid d-flex justify-content-end align-items-center">
-                        <span class="navbar-brand">Admin</span>
-                        <span class="iconify" data-icon="fa6-solid:user" data-width="20" data-height="20"></span>
-                    </div>
+                <div class="container-fluid d-flex justify-content-end">
+                    <span class="navbar-brand me-2">Admin</span>
+                    <span class="iconify" data-icon="fa6-solid:user" data-width="20" data-height="20"></span>
                 </div>
             </div>
+        <!-- Topbar End -->
+
             <!-- Topbar End -->
 
             <!-- Section Start -->

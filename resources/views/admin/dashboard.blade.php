@@ -20,7 +20,7 @@
                 'Dra. Sri Hendah Mrin Lestari, M.Si.',
                 'Edi Sutrisno, S.Pd.',
                 'Finalia Meiriana, S.Pd.',
-                'Elly Andriani, MK., S.T.'
+                'Elly Andriani, MK., S.T.',
                 'Lutfi'
             ];
         @endphp
