@@ -67,8 +67,7 @@
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
-                <a class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
-
+                <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
                         <span class="iconify" data-icon="tabler:home" data-width="22"></span>
                         Beranda
                     </a>
@@ -80,7 +79,7 @@
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->is('guru') ? 'active' : '' }}" href="{{ route('guru') }}">
+                    <a class="nav-link {{ request()->is('guru*') ? 'active' : '' }}" href="{{ route('guru.index') }}">
                         <span class="iconify" data-icon="tabler:user" data-width="22"></span>
                         Guru
                     </a>

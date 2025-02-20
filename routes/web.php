@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-// use App\Http\Controllers\adminControllers\DashboardAdminController;
+use App\Http\Controllers\GuruController;
 
 Route::get('/', function () {
     return view('admin.dashboard');
@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('admin.dashboard');
 });
 
+
 Route::get('/picketTeach', function () {
     return view('admin.picketTeach'); // Tambahkan 'admin.' karena ada di dalam folder admin
 })->name('picketTeach');
@@ -27,9 +28,8 @@ Route::get('/tugas', function () {
     return view('admin.task');
 })->name('tugas');
 
-Route::get('/guru', function () {
-    return view('admin.teacher'); // Sesuaikan dengan lokasi file Blade
-})->name('guru');
+
+Route::resource('guru', GuruController::class);
 
 Route::get('/rekap', function () {
     return view('admin.recap'); // Sesuaikan dengan lokasi file Blade
