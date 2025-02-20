@@ -79,13 +79,13 @@
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->is('guru*') ? 'active' : '' }}" href="{{ route('guru.index') }}">
+                    <a class="nav-link {{ request()->routeIs('admin.guru.*') ? 'active' : '' }}" href="{{ route('admin.guru.index') }}">
                         <span class="iconify" data-icon="tabler:user" data-width="22"></span>
                         Guru
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->is('picketTeach') ? 'active' : '' }}" href="{{ route('picketTeach') }}">
+                    <a class="nav-link {{ request()->routeIs('admin.guruPiket.*') ? 'active' : '' }}" href="{{ route('admin.guruPiket.index') }}">
                         <span class="iconify" data-icon="tabler:users" data-width="22"></span>
                         Guru Piket
                     </a>

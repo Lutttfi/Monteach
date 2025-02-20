@@ -12,8 +12,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $guru = Guru::all(); // Ambil semua data guru dari database
-        return view('admin.teacher', compact('guru')); // Kirim ke view
+        $guru = Guru::all();
+        return view('admin.guru.index', compact('guru'));
     }
 
     /**
@@ -21,7 +21,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view('admin.create_teacher');
+        return view('admin.guru.create_teacher');
     }
 
     /**
@@ -37,15 +37,7 @@ class GuruController extends Controller
             'nama' => $request->nama
         ]);
 
-        return redirect()->route('guru.index')->with('success', 'Guru berhasil ditambahkan.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        return redirect()->route('admin.guru.index')->with('success', 'Guru berhasil ditambahkan.');
     }
 
     /**
@@ -54,7 +46,7 @@ class GuruController extends Controller
     public function edit(string $id)
     {
         $guru = Guru::findOrFail($id);
-        return view('admin.edit_teacher', compact('guru'));
+        return view('admin.guru.edit_teacher', compact('guru'));
     }
 
     /**
@@ -66,15 +58,12 @@ class GuruController extends Controller
             'nama' => 'required'
         ]);
     
-        // Ambil data guru berdasarkan ID
         $guru = Guru::findOrFail($id);
-    
-        // Update data guru
         $guru->update([
             'nama' => $request->nama
         ]);
     
-        return redirect()->route('guru.index')->with('success', 'Guru berhasil diperbarui.');
+        return redirect()->route('admin.guru.index')->with('success', 'Guru berhasil diperbarui.');
     }
 
     /**
@@ -82,12 +71,9 @@ class GuruController extends Controller
      */
     public function destroy(string $id)
     {
-        // Ambil data guru berdasarkan ID
         $guru = Guru::findOrFail($id);
-            
-        // Hapus guru dari database
         $guru->delete();
             
-        return redirect()->route('guru.index')->with('success', 'Guru berhasil dihapus.');
+        return redirect()->route('admin.guru.index')->with('success', 'Guru berhasil dihapus.');
     }
 }
