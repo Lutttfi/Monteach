@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Guru;
+use App\Models\GuruPiket;
 
 class GuruController extends Controller
 {
@@ -76,4 +77,16 @@ class GuruController extends Controller
             
         return redirect()->route('admin.guru.index')->with('success', 'Guru berhasil dihapus.');
     }
+
+    public function guruIndex()
+    {
+    $guru = Guru::all(); // Ambil semua data guru dari database
+    return view('guru.guru', compact('guru')); // Tampilkan di halaman guru
+    }
+
+    public function guruPiket()
+{
+    $guruPiket = GuruPiket::all(); // Ambil data dari database
+    return view('guru.guruPiket', compact('guruPiket')); // Kirim ke view
+}
 }

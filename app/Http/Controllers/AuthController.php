@@ -17,16 +17,25 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required'
         ]);
-
+    
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('admin.dashboard'); // Sesuaikan dengan halaman utama setelah login
+            $user = Auth::user();
+    
+            if ($user->role == 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->role == 'guru') {
+                return redirect()->route('guru.dashboard');
+            } else {
+                return redirect('/'); // Redirect default
+            }
         }
-
-        return back()->withErrors(['email' => 'Email atau password salah.']);
+    
+        return back()->withErrors(['email' => 'Email atau password salah']);
     }
+    
+
 
     // Proses logout
     public function logout(Request $request)
@@ -34,6 +43,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login'); // Kembali ke halaman login setelah logout
+        return redirect('/'); // Kembali ke halaman login setelah logout
     }
 }

@@ -95,7 +95,7 @@
         @endif
         <form action="{{ route('login') }}" method="POST">
             @csrf
-            <input type="text" name="email" placeholder="Masukkan Username" required>
+            <input type="text" name="email" placeholder="Masukkan Email" required>
             <input type="password" name="password" placeholder="Masukkan Password" required>
             <div class="checkbox-container">
                 <input type="checkbox" id="remember" name="remember">

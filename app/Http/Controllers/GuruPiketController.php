@@ -50,4 +50,5 @@ class GuruPiketController extends Controller
         $guruPiket->delete();
         return redirect()->route('admin.guruPiket.index')->with('success', 'Guru Piket berhasil dihapus!');
     }
+    
 }
