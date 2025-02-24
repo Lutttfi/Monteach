@@ -18,4 +18,4 @@ Route::get('/admin/teacher', [TeacherAdminController::class, 'index'])->name('ad
 Route::get('/admin/picketTeacher', [PicketTeacherAdminController::class, 'index'])->name('admin.picketTeacher');
 Route::get('/admin/recap', [RecapAdminController::class, 'index'])->name('admin.recap');
 Route::get('/admin/manageUser', [ManageUserAdminController::class, 'index'])->name('admin.manageUser');
->>>>>>> f913a54f90446a38a8d5f9e78fbf55f77d82e408
+

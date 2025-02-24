@@ -9,6 +9,6 @@ class TaskAdminController extends Controller
 {
     public function index()
     {
-        return view('admin.task');
+        return view('admin.task.index');
     }
 }
