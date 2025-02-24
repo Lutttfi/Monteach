@@ -13,20 +13,18 @@ Route::get('/', function () {
     return redirect()->route('admin.dashboard');
 });
 
-<<<<<<< HEAD
-Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/tasks', [TaskAdminController::class, 'index'])->name('admin.task');
-Route::get('/admin/teacher', [TeacherAdminController::class, 'index'])->name('admin.teacher');
-Route::get('/admin/picketTeacher', [PicketTeacherAdminController::class, 'index'])->name('admin.picketTeacher');
-Route::get('/admin/recap', [RecapAdminController::class, 'index'])->name('admin.recap');
-Route::get('/admin/manageUser', [ManageUserAdminController::class, 'index'])->name('admin.manageUser');
-
-=======
 // Route untuk halaman utama admin
 Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/teacher', [TeacherAdminController::class, 'index'])->name('teacher.index');  // <-- PASTIKAN INI ADA
+    Route::get('/teacher/create', [TeacherAdminController::class, 'create'])->name('teacher.create');
+    Route::post('/teacher', [TeacherAdminController::class, 'store'])->name('teacher.store');
+    Route::get('/teacher/{teacher}/edit', [TeacherAdminController::class, 'edit'])->name('teacher.edit');
+    Route::put('/teacher/{teacher}', [TeacherAdminController::class, 'update'])->name('teacher.update');
+    Route::delete('/teacher/{teacher}', [TeacherAdminController::class, 'destroy'])->name('teacher.destroy');
+
+
     Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
     Route::get('/tasks', [TaskAdminController::class, 'index'])->name('task');
-    Route::get('/teacher', [TeacherAdminController::class, 'index'])->name('teacher');
     Route::get('/recap', [RecapAdminController::class, 'index'])->name('recap');
     Route::get('/manageUser', [ManageUserAdminController::class, 'index'])->name('manageUser');
 
@@ -39,4 +37,3 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('/picketTeacher/{guruPiket}', [PicketTeacherAdminController::class, 'destroy'])->name('picketTeacher.destroy');
 
     });
->>>>>>> 369127baa190518f6d6eb995aba9c0d8c7fd9a49

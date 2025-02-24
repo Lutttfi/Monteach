@@ -79,7 +79,7 @@
     </a>
 </li>
 <li class="nav-item mb-2">
-    <a class="nav-link {{ request()->routeIs('admin.teacher') ? 'active' : '' }}" href="{{ route('admin.teacher') }}">
+    <a class="nav-link {{ request()->routeIs('admin.teacher.*') ? 'active' : '' }}" href="{{ route('admin.teacher.index') }}">
         <span class="iconify" data-icon="tabler:user" data-width="22"></span>
         Guru
     </a>

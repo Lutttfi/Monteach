@@ -77,6 +77,6 @@ class TeacherAdminController extends Controller
         $guru = Guru::findOrFail($id);
         $guru->delete();
             
-        return redirect()->route('admin.guru.index')->with('success', 'Guru berhasil dihapus.');
+        return redirect()->route('admin.teacher.index')->with('success', 'Guru berhasil dihapus.');
     }
 }

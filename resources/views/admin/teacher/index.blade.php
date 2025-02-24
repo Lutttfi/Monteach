@@ -2,35 +2,35 @@
 
 @section('content')
 <div class="container mt-4">
-        <h3 style="padding: 15px 0 15px 0;">Data Guru</h3>
-        <a href="{{ route('admin.teacher.create') }}" class="btn btn-success mb-3">Tambah Guru</a>
-        
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead class="bg-success text-white">
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($guru as $g)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $g->nama }}</td>
-                        <td>
-                            <a href="{{ route('admin.teacher.edit', $g->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <form action="{{ route('admin.teacher.destroy', $g->id) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+    <h3 class="py-3">Data Guru</h3>
+    <a href="{{ route('admin.teacher.create') }}" class="btn btn-secondary mb-3">Tambah Guru</a>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered text-center" style="border-radius: 10px; overflow: hidden;">
+            <thead style="background-color: #009D12; color: white;">
+                <tr>
+                    <th style="width:10%; border-top-left-radius: 10px;">No</th>
+                    <th class="width:50%; text-center">Nama</th>
+                    <th class="width:0%; text-center" style="border-top-right-radius: 10px;">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($guru as $g)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td class="align-middle">{{ $g->nama }}</td>
+                    <td class="align-middle">
+                        <a href="{{ route('admin.teacher.edit', $g->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <form action="{{ route('admin.teacher.destroy', $g->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 @endsection
