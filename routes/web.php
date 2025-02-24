@@ -12,15 +12,26 @@ use App\Http\Controllers\admin\ManageUserAdminController;
 Route::get('/', function () {
     return redirect()->route('admin.dashboard');
 });
+
 // Route untuk halaman utama admin
 Route::prefix('admin')->name('admin.')->group(function () {
+
+    // Route untuk halaman teacher
+    Route::get('/teacher', [TeacherAdminController::class, 'index'])->name('teacher.index');  // <-- PASTIKAN INI ADA
+    Route::get('/teacher/create', [TeacherAdminController::class, 'create'])->name('teacher.create');
+    Route::post('/teacher', [TeacherAdminController::class, 'store'])->name('teacher.store');
+    Route::get('/teacher/{teacher}/edit', [TeacherAdminController::class, 'edit'])->name('teacher.edit');
+    Route::put('/teacher/{teacher}', [TeacherAdminController::class, 'update'])->name('teacher.update');
+    Route::delete('/teacher/{teacher}', [TeacherAdminController::class, 'destroy'])->name('teacher.destroy');
+
+
     Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
     Route::get('/tasks', [TaskAdminController::class, 'index'])->name('task');
-    Route::get('/teacher', [TeacherAdminController::class, 'index'])->name('teacher');
     Route::get('/recap', [RecapAdminController::class, 'index'])->name('recap');
     Route::get('/manageUser', [ManageUserAdminController::class, 'index'])->name('manageUser');
 
 
+    // Route untuk halaman picket teacher
     Route::get('/picketTeacher', [PicketTeacherAdminController::class, 'index'])->name('picketTeacher.index');
     Route::get('/picketTeacher/create', [PicketTeacherAdminController::class, 'create'])->name('picketTeacher.create');
     Route::post('/picketTeacher', [PicketTeacherAdminController::class, 'store'])->name('picketTeacher.store');

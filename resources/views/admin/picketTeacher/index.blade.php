@@ -18,7 +18,6 @@
             <tr>
                 <th>No</th>
                 <th>Nama Guru</th>
-                <th>Hari Piket</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -27,7 +26,6 @@
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $guru->nama }}</td>
-                    <td>{{ $guru->hari_piket }}</td>
                     <td>
                         <!-- Tombol Edit -->
                         <a href="{{ route('admin.picketTeacher.edit', $guru->id) }}" class="btn btn-warning btn-sm">Edit</a>
