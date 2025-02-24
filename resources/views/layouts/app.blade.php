@@ -55,6 +55,18 @@
             background-color: white;
             color: black;
         }
+
+        th {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        
     </style>
 </head>
 

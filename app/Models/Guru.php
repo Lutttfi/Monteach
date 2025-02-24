@@ -9,5 +9,7 @@ class Guru extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama']; // Pastikan field-nya benar
+    protected $table = 'gurus'; // Pastikan ini ada
+
+    protected $fillable = ['nama']; // Pastikan field yang boleh diisi
 }
