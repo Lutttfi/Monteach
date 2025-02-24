@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<p>Beranda</p>
+<div>
+    <p><img src="{{ asset('foto/mapelbg.png') }}" alt=""></p>
+</div>
 @endsection
