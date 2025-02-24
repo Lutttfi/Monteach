@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Guru;
-use App\Models\GuruPiket;
 
-class GuruController extends Controller
+use App\Models\Guru;
+
+
+class TeacherAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -77,16 +79,4 @@ class GuruController extends Controller
             
         return redirect()->route('admin.guru.index')->with('success', 'Guru berhasil dihapus.');
     }
-
-    public function guruIndex()
-    {
-    $guru = Guru::all(); // Ambil semua data guru dari database
-    return view('guru.guru', compact('guru')); // Tampilkan di halaman guru
-    }
-
-    public function guruPiket()
-{
-    $guruPiket = GuruPiket::all(); // Ambil data dari database
-    return view('guru.guruPiket', compact('guruPiket')); // Kirim ke view
-}
 }
