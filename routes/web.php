@@ -12,16 +12,6 @@ use App\Http\Controllers\admin\ManageUserAdminController;
 Route::get('/', function () {
     return redirect()->route('admin.dashboard');
 });
-
-<<<<<<< HEAD
-Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/tasks', [TaskAdminController::class, 'index'])->name('admin.task');
-Route::get('/admin/teacher', [TeacherAdminController::class, 'index'])->name('admin.teacher');
-Route::get('/admin/picketTeacher', [PicketTeacherAdminController::class, 'index'])->name('admin.picketTeacher');
-Route::get('/admin/recap', [RecapAdminController::class, 'index'])->name('admin.recap');
-Route::get('/admin/manageUser', [ManageUserAdminController::class, 'index'])->name('admin.manageUser');
-
-=======
 // Route untuk halaman utama admin
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
@@ -39,4 +29,3 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('/picketTeacher/{guruPiket}', [PicketTeacherAdminController::class, 'destroy'])->name('picketTeacher.destroy');
 
     });
->>>>>>> 369127baa190518f6d6eb995aba9c0d8c7fd9a49
