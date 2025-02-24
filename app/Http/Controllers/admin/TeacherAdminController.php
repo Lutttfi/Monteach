@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Guru;
 use App\Models\GuruPiket;
 
-class TeacherAdminController extends Controller
+class GuruController extends Controller
 {
-<<<<<<< HEAD
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $guru = Guru::all();
-        return view('admin.guru.index', compact('guru'));
+        return view('admin.teacher.index', compact('guru'));
     }
 
     /**
@@ -91,10 +89,4 @@ class TeacherAdminController extends Controller
     $guruPiket = GuruPiket::all(); // Ambil data dari database
     return view('guru.guruPiket', compact('guruPiket')); // Kirim ke view
 }
-=======
-    public function index()
-    {
-        return view('admin.teacher');
-    }
->>>>>>> f913a54f90446a38a8d5f9e78fbf55f77d82e408
 }
