@@ -66,42 +66,43 @@
                 <h2>LOGO</h2>
             </div>
             <ul class="nav flex-column">
-                <li class="nav-item mb-2">
-                <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
-                        <span class="iconify" data-icon="tabler:home" data-width="22"></span>
-                        Beranda
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->is('admin.task.*') ? 'active' : '' }}" href="{{ route('admin.task') }}">
-                        <span class="iconify" data-icon="tabler:clipboard-list" data-width="22"></span>
-                        Tugas
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->routeIs('admin.Teacher.*') ? 'active' : '' }}" href="{{ route('admin.teacher') }}">
-                        <span class="iconify" data-icon="tabler:user" data-width="22"></span>
-                        Guru
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->routeIs('admin.PicketTeacher.*') ? 'active' : '' }}" href="{{ route('admin.picketTeacher') }}">
-                        <span class="iconify" data-icon="tabler:users" data-width="22"></span>
-                        Guru Piket
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->is('admin.recap') ? 'active' : '' }}" href="{{ route('admin.recap') }}">
-                        <span class="iconify" data-icon="tabler:report" data-width="22"></span>
-                        Rekap
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->is('admin.manageUser') ? 'active' : '' }}" href="{{ route('admin.manageUser') }}">
-                        <span class="iconify" data-icon="tabler:settings" data-width="22"></span>
-                        Manage User
-                    </a>
-                </li>
+            <li class="nav-item mb-2">
+    <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
+        <span class="iconify" data-icon="tabler:home" data-width="22"></span>
+        Beranda
+    </a>
+</li>
+<li class="nav-item mb-2">
+    <a class="nav-link {{ request()->routeIs('admin.task') ? 'active' : '' }}" href="{{ route('admin.task') }}">
+        <span class="iconify" data-icon="tabler:clipboard-list" data-width="22"></span>
+        Tugas
+    </a>
+</li>
+<li class="nav-item mb-2">
+    <a class="nav-link {{ request()->routeIs('admin.teacher') ? 'active' : '' }}" href="{{ route('admin.teacher') }}">
+        <span class="iconify" data-icon="tabler:user" data-width="22"></span>
+        Guru
+    </a>
+</li>
+<li class="nav-item mb-2">
+    <a class="nav-link {{ request()->routeIs('admin.picketTeacher.*') ? 'active' : '' }}" href="{{ route('admin.picketTeacher.index') }}">
+        <span class="iconify" data-icon="tabler:users" data-width="22"></span>
+        Guru Piket
+    </a>
+</li>
+<li class="nav-item mb-2">
+    <a class="nav-link {{ request()->routeIs('admin.recap') ? 'active' : '' }}" href="{{ route('admin.recap') }}">
+        <span class="iconify" data-icon="tabler:report" data-width="22"></span>
+        Rekap
+    </a>
+</li>
+<li class="nav-item mb-2">
+    <a class="nav-link {{ request()->routeIs('admin.manageUser') ? 'active' : '' }}" href="{{ route('admin.manageUser') }}">
+        <span class="iconify" data-icon="tabler:settings" data-width="22"></span>
+        Manage User
+    </a>
+</li>
+
             </ul>
         </nav>
         <!-- Sidebar End -->
