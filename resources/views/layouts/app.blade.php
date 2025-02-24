@@ -73,31 +73,31 @@
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->is('tugas') ? 'active' : '' }}" href="{{ route('tugas') }}">
+                    <a class="nav-link {{ request()->is('admin.task.*') ? 'active' : '' }}" href="{{ route('admin.task') }}">
                         <span class="iconify" data-icon="tabler:clipboard-list" data-width="22"></span>
                         Tugas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->routeIs('admin.guru.*') ? 'active' : '' }}" href="{{ route('admin.guru.index') }}">
+                    <a class="nav-link {{ request()->routeIs('admin.Teacher.*') ? 'active' : '' }}" href="{{ route('admin.teacher') }}">
                         <span class="iconify" data-icon="tabler:user" data-width="22"></span>
                         Guru
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->routeIs('admin.guruPiket.*') ? 'active' : '' }}" href="{{ route('admin.guruPiket.index') }}">
+                    <a class="nav-link {{ request()->routeIs('admin.PicketTeacher.*') ? 'active' : '' }}" href="{{ route('admin.picketTeacher') }}">
                         <span class="iconify" data-icon="tabler:users" data-width="22"></span>
                         Guru Piket
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->is('rekap') ? 'active' : '' }}" href="{{ route('rekap') }}">
+                    <a class="nav-link {{ request()->is('admin.recap') ? 'active' : '' }}" href="{{ route('admin.recap') }}">
                         <span class="iconify" data-icon="tabler:report" data-width="22"></span>
                         Rekap
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link {{ request()->is('manageUser') ? 'active' : '' }}" href="{{ route('manageUser') }}">
+                    <a class="nav-link {{ request()->is('admin.manageUser') ? 'active' : '' }}" href="{{ route('admin.manageUser') }}">
                         <span class="iconify" data-icon="tabler:settings" data-width="22"></span>
                         Manage User
                     </a>
@@ -115,12 +115,12 @@
                 <div class="dropdown">
                     <span class="iconify dropdown-toggle" data-bs-toggle="dropdown" data-icon="fa6-solid:user" data-width="20" data-height="20" style="cursor: pointer;"></span>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li>
-                            <form action="{{ route('logout') }}" method="POST">
+                        {{-- <li>
+                            <form action="{{ route('') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="dropdown-item">Logout</button>
                             </form>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>

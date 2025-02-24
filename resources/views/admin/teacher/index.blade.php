@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
         <h3 style="padding: 15px 0 15px 0;">Data Guru</h3>
-        <a href="{{ route('admin.guru.create') }}" class="btn btn-success mb-3">Tambah Guru</a>
+        <a href="{{ route('admin.teacher.create') }}" class="btn btn-success mb-3">Tambah Guru</a>
         
         <div class="table-responsive">
             <table class="table table-bordered">
@@ -20,8 +20,8 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $g->nama }}</td>
                         <td>
-                            <a href="{{ route('admin.guru.edit', $g->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <form action="{{ route('admin.guru.destroy', $g->id) }}" method="POST" class="d-inline">
+                            <a href="{{ route('admin.teacher.edit', $g->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <form action="{{ route('admin.teacher.destroy', $g->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>

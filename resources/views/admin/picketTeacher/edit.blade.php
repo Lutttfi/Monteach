@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <h2>Edit Guru Piket</h2>
-    <form action="{{ route('admin.guruPiket.update', $guruPiket->id) }}" method="POST">
+    <form action="" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -15,7 +15,7 @@
             <input type="text" name="hari_piket" class="form-control" value="{{ $guruPiket->hari_piket }}" required>
         </div>
         <button type="submit" class="btn btn-success">Update</button>
-        <a href="{{ route('admin.guruPiket.index') }}" class="btn btn-secondary">Batal</a>
+        <a href="" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 @endsection

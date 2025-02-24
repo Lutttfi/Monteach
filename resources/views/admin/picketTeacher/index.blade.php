@@ -4,11 +4,11 @@
 <div class="container mt-4">
     <h2 class="mb-4" style="padding: 20px 0 0 17px;">Daftar Guru Piket</h2>
     
-    <a href="{{ route('admin.guruPiket.create') }}" class="btn btn-success" style="margin-left: 17px;">
+    <a href="{{ route('admin.picketTeacher.create') }}" class="btn btn-success" style="margin-left: 17px;">
         <span class="iconify" data-icon="tabler:plus" data-width="20"></span> Tambah Guru Piket
     </a>
     @if(session('success'))
-        <div class="alert alert-success" style="margin: 10px;">{{ session('success') }}</div>
+        <div class="alert alert-success" style="margin: 10px;"></div>
     @endif
 
         <div class="card-body">
@@ -24,14 +24,14 @@
                 <tbody>
                     @foreach($guruPiket as $key => $item)
                         <tr>
-                            <td class="text-center">{{ $key + 1 }}</td>
-                            <td>{{ $item->nama }}</td>
-                            <td>{{ $item->hari_piket }}</td>
+                            <td class="text-center"></td>
+                            <td></td>
+                            <td></td>
                             <td class="text-center">
-                                <a href="{{ route('admin.guruPiket.edit', $item->id) }}" class="btn btn-warning btn-sm">
+                                <a href="" class="btn btn-warning btn-sm">
                                     <span class="iconify" data-icon="tabler:edit" data-width="18"></span> Edit
                                 </a>
-                                <form action="{{ route('admin.guruPiket.destroy', $item->id) }}" method="POST" class="d-inline">
+                                <form action="" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
@@ -41,7 +41,7 @@
                             </td>
                         </tr>
                     @endforeach
-                    @if($guruPiket->isEmpty())
+                    @if
                         <tr>
                             <td colspan="4" class="text-center text-muted">Belum ada data guru piket</td>
                         </tr>

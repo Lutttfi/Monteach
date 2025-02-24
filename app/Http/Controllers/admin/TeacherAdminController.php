@@ -9,6 +9,7 @@ use App\Models\GuruPiket;
 
 class TeacherAdminController extends Controller
 {
+<<<<<<< HEAD
      /**
      * Display a listing of the resource.
      */
@@ -90,4 +91,10 @@ class TeacherAdminController extends Controller
     $guruPiket = GuruPiket::all(); // Ambil data dari database
     return view('guru.guruPiket', compact('guruPiket')); // Kirim ke view
 }
+=======
+    public function index()
+    {
+        return view('admin.teacher');
+    }
+>>>>>>> f913a54f90446a38a8d5f9e78fbf55f77d82e408
 }

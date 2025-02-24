@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class ManageUserAdminController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('admin.manageUser');
+    }
 }
