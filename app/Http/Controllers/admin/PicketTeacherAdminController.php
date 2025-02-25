@@ -25,13 +25,11 @@ class PicketTeacherAdminController extends Controller
 public function store(Request $request)
 {
     $request->validate([
-        'guru_id' => 'required|exists:gurus,id',
-        'nama' => 'required',
+        'guru_id' => 'required|exists:gurus,id'
     ]);
 
     GuruPiket::create([
-        'guru_id' => $request->guru_id,
-        'nama' => $request->nama,
+        'guru_id' => $request->guru_id
     ]);
 
     return redirect()->route('admin.picketTeacher.index')->with('success', 'Data piket guru berhasil ditambahkan.');

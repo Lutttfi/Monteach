@@ -5,19 +5,19 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
-use App\Models\Guru;
+use App\Models\GuruPiket;
 
 class TaskAdminController extends Controller
 {
     public function index()
     {
-        $guru = Guru::all();
+        $guru = GuruPiket::all();
         return view('admin.task.index', compact('guru'));
     }
 
     public function create()
 {
-    $guru = Guru::all(); // Mengambil semua data guru dari tabel 'gurus'
+    $guru = GuruPiket::all(); // Mengambil semua data guru dari tabel 'gurus'
     return view('admin.task.create', compact('guru')); // Mengirim variabel $guru ke view
 }
 
@@ -44,7 +44,7 @@ class TaskAdminController extends Controller
 
     public function edit(Task $task)
     {
-        $guru = Guru::all(); // Ambil semua data guru
+        $guru = GuruPiket::all(); // Ambil semua data guru
         return view('admin.task.edit', compact('task', 'guru'));
     }
 
