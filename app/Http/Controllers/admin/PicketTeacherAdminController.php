@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\GuruPiket;
+use App\Models\Guru;
 
 class PicketTeacherAdminController extends Controller
 {
@@ -15,36 +16,45 @@ class PicketTeacherAdminController extends Controller
     }
 
     public function create()
-    {
-        return view('admin.picketTeacher.create');
-    }
+{
+    
+    $guru = Guru::all();
+    return view('admin.picketTeacher.create', compact('guru'));
+}
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'hari_piket' => 'required|string|max:50',
-        ]);
+public function store(Request $request)
+{
+    $request->validate([
+        'guru_id' => 'required|exists:gurus,id'
+    ]);
 
-        GuruPiket::create($request->all());
-        return redirect()->route('admin.picketTeacher.index')->with('success', 'Guru Piket berhasil ditambahkan!');
-    }
+    GuruPiket::create([
+        'guru_id' => $request->guru_id
+    ]);
 
-    public function edit(GuruPiket $guruPiket)
-    {
-        return view('admin.picketTeacher.edit', compact('guruPiket'));
-    }
+    return redirect()->route('admin.picketTeacher.index')->with('success', 'Data piket guru berhasil ditambahkan.');
+}
+
+public function edit(GuruPiket $guruPiket)
+{
+    $guru = Guru::all(); // Ambil semua data guru
+    return view('admin.picketTeacher.edit', compact('guruPiket', 'guru'));
+}
 
     public function update(Request $request, GuruPiket $guruPiket)
-    {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'hari_piket' => 'required|string|max:50',
-        ]);
+{
+    $request->validate([
+        'guru_id' => 'required|exists:gurus,id', // Validasi guru_id dari tabel gurus
+    ]);
 
-        $guruPiket->update($request->all());
-        return redirect()->route('admin.picketTeacher.index')->with('success', 'Guru Piket berhasil diperbarui!');
-    }
+    $guruPiket->update([
+        'guru_id' => $request->guru_id
+    ]);
+
+    return redirect()->route('admin.picketTeacher.index')->with('success', 'Guru Piket berhasil diperbarui!');
+}
+
+
 
     public function destroy(GuruPiket $guruPiket)
     {

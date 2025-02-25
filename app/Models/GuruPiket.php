@@ -9,10 +9,12 @@ class GuruPiket extends Model
 {
     use HasFactory;
 
-    protected $table = 'guru_piket'; // Sesuaikan dengan nama tabel
+    protected $table = 'guru_piket';
 
-    protected $fillable = [
-        'nama',         // Nama guru piket
-        'hari_piket'    // Hari piket
-    ];
+    protected $fillable = ['guru_id']; 
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class, 'guru_id');
+    }
 }

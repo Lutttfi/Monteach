@@ -4,7 +4,12 @@
 <div class="container mt-4">
     <h3 class="py-3">Data Guru</h3>
     <a href="{{ route('admin.teacher.create') }}" class="btn btn-secondary mb-3">Tambah Guru</a>
-    
+    @if(session('success'))
+    <div id="alert-success" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <div class="table-responsive">
         <table class="table table-bordered text-center" style="border-radius: 10px; overflow: hidden;">
             <thead style="background-color: #009D12; color: white;">
