@@ -25,8 +25,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('/teacher/{teacher}', [TeacherAdminController::class, 'destroy'])->name('teacher.destroy');
 
 
+    Route::get('/tasks', [TaskAdminController::class, 'index'])->name('task.index');
+    Route::get('/tasks/create', [TaskAdminController::class, 'create'])->name('task.create');
+    Route::post('/tasks', [TaskAdminController::class, 'store'])->name('task.store');
+
+
     Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
-    Route::get('/tasks', [TaskAdminController::class, 'index'])->name('task');
     Route::get('/recap', [RecapAdminController::class, 'index'])->name('recap');
     Route::get('/manageUser', [ManageUserAdminController::class, 'index'])->name('manageUser');
 

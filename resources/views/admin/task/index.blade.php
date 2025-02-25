@@ -2,24 +2,30 @@
 
 @section('content')
 <div class="container mt-4">
-    <h3 style="padding: 15px 0 15px 0;">Data Guru</h3>
-    <a href="" class="btn btn-success mb-3">Tambah Guru</a>
-    
+    <h3 class="py-3">Daftar Tugas</h3>
+    <a href="{{ route('admin.task.create') }}" class="btn btn-secondary mb-3">Tambah Tugas</a>
+    @if(session('success'))
+    <div id="alert-success" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead class="bg-success text-white">
+        <table class="table table-bordered text-center" style="border-radius: 10px; overflow: hidden;">
+            <thead style="background-color: #009D12; color: white;">
                 <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Aksi</th>
+                    <th style="width:10%; border-top-left-radius: 10px;">No</th>
+                    <th class="width:60%; text-center">Nama</th>
+                    <th class="width:60%; text-center">Status</th>
+                    <th class="width:10%; text-center" style="border-top-right-radius: 10px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach --}}
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle">
                         <a href="" class="btn btn-primary btn-sm">Edit</a>
                         <form action="" method="POST" class="d-inline">
                             @csrf
@@ -28,7 +34,6 @@
                         </form>
                     </td>
                 </tr>
-                {{-- @endforeach --}}
             </tbody>
         </table>
     </div>

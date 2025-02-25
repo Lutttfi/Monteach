@@ -19,17 +19,19 @@ class PicketTeacherAdminController extends Controller
 {
     
     $guru = Guru::all();
-    return view('admin.picketTeacher.create', compact('guru'));
+    return view('admin.picketTeacher.create', compact('guru',));
 }
 
 public function store(Request $request)
 {
     $request->validate([
-        'guru_id' => 'required|exists:gurus,id'
+        'guru_id' => 'required|exists:gurus,id',
+        'nama' => 'required',
     ]);
 
     GuruPiket::create([
-        'guru_id' => $request->guru_id
+        'guru_id' => $request->guru_id,
+        'nama' => $request->nama,
     ]);
 
     return redirect()->route('admin.picketTeacher.index')->with('success', 'Data piket guru berhasil ditambahkan.');

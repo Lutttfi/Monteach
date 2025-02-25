@@ -85,7 +85,7 @@
     </a>
 </li>
 <li class="nav-item mb-2">
-    <a class="nav-link {{ request()->routeIs('admin.task') ? 'active' : '' }}" href="{{ route('admin.task') }}">
+    <a class="nav-link {{ request()->routeIs('admin.task.*') ? 'active' : '' }}" href="{{ route('admin.task.index') }}">
         <span class="iconify" data-icon="tabler:clipboard-list" data-width="22"></span>
         Tugas
     </a>
