@@ -9,9 +9,11 @@ return new class extends Migration {
     {
         Schema::create('guru_piket', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('hari_piket');
-            $table->timestamps();
+    $table->unsignedBigInteger('guru_id');
+    $table->string('nama')->nullable(); // <- Tambahkan nullable biar bisa kosong
+    $table->timestamps();
+
+    $table->foreign('guru_id')->references('id')->on('gurus')->onDelete('cascade');
         });
     }
 
