@@ -10,7 +10,12 @@
 
             <div class="mb-3">
                 <label for="kelas" class="form-label text-dark">Kelas :</label>
-                <input type="text" class="form-control" name="kelas" required>
+                <input type="text" class="form-control" name="kelas" value="{{ old('kelas', $task->kelas) ?? $task->kelas }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="tanggal_tugas" class="form-label text-dark">Tanggal Tugas:</label>
+                <input type="date" class="form-control" name="tanggal_tugas" value="{{ \Carbon\Carbon::tomorrow()->format('Y-m-d') }}" required>
             </div>
 
             <div class="mb-3">

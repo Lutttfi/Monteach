@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_guru');
             $table->string('kelas');
             $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending');
+            $table->date('tanggal_tugas');
             $table->timestamps();
         });
     }

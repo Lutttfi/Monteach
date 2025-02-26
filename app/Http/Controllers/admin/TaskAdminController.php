@@ -27,6 +27,7 @@ class TaskAdminController extends Controller
     $request->validate([
         'nama_guru' => 'required|string',
         'kelas' => 'required|string',
+        'tanggal_tugas' => 'required|date',
     ]);
 
     // Simpan data ke dalam database
@@ -34,6 +35,7 @@ class TaskAdminController extends Controller
         'nama_guru' => $request->nama_guru,
         'kelas' => $request->kelas,
         'status' => 'pending',
+        'tanggal_tugas' => $request->tanggal_tugas,
     ]);
 
     return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil ditambahkan!');
@@ -52,7 +54,7 @@ public function update(Request $request, $id)
     $request->validate([
         'nama_guru' => 'required|string',
         'kelas' => 'required|string',
-        // 'status' => 'required|in:pending,in_progress,completed', // Validasi status
+        'tanggal_tugas' => 'required|date',
     ]);
 
     // Cari task berdasarkan id
@@ -63,6 +65,7 @@ public function update(Request $request, $id)
         'nama_guru' => $request->nama_guru,
         'kelas' => $request->kelas,
         'status' => 'pending',
+        'tanggal_tugas' => $request->tanggal_tugas,
     ]);
 
     return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil diupdate!');

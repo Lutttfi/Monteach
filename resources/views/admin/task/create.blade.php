@@ -11,6 +11,11 @@
             </div>
 
             <div class="mb-3">
+                <label for="tanggal_tugas" class="form-label text-dark">Tanggal Tugas:</label>
+                <input type="date" class="form-control" name="tanggal_tugas" value="{{ \Carbon\Carbon::tomorrow()->format('Y-m-d') }}" required>
+            </div>
+
+            <div class="mb-3">
                 <label for="nama_guru" class="form-label text-dark">Nama Guru Piket :</label>
                 <select name="nama_guru" class="form-control">
                     <option value="">Pilih Guru Piket</option>
