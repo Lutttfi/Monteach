@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <h2 class="py-3">Daftar Guru Piket</h2>
+    <h3 class="py-3">Daftar Guru Piket</h3>
 
     <!-- Tombol Tambah Guru Piket -->
     <a href="{{ route('admin.picketTeacher.create') }}" class="btn btn-secondary mb-3">Tambah Guru Piket</a>
@@ -19,9 +19,9 @@
     <table class="table table-bordered">
         <thead style="background-color:  #009D12; color: white;">
             <tr>
-                <th style="width:1px; border-top-left-radius: 10px;">No</th>
-                <th style="width: 50%;">Nama Guru</th>
-                <th style="width: 30px; border-top-right-radius: 10px;">Aksi</th>
+                <th style="width:10%; border-top-left-radius: 10px;">No</th>
+                <th style="width: 43%;">Nama</th>
+                <th style="border-top-right-radius: 10px;">Aksi</th>
             </tr>
         </thead>
         <tbody>
