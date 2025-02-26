@@ -24,10 +24,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/teacher/{teacher}', [TeacherAdminController::class, 'update'])->name('teacher.update');
     Route::delete('/teacher/{teacher}', [TeacherAdminController::class, 'destroy'])->name('teacher.destroy');
 
-
+    // Route untuk halaman task
     Route::get('/tasks', [TaskAdminController::class, 'index'])->name('task.index');
     Route::get('/tasks/create', [TaskAdminController::class, 'create'])->name('task.create');
     Route::post('/tasks', [TaskAdminController::class, 'store'])->name('task.store');
+    Route::get('/tasks/{task}/edit', [TaskAdminController::class, 'edit'])->name('task.edit');
+    Route::put('/tasks/{task}', [TaskAdminController::class, 'update'])->name('task.update');
+    Route::delete('/tasks/{task}', [TaskAdminController::class, 'destroy'])->name('task.destroy');
 
 
     Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');

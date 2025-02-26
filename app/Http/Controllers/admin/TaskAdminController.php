@@ -11,8 +11,8 @@ class TaskAdminController extends Controller
 {
     public function index()
     {
-        $guru = GuruPiket::all();
-        return view('admin.task.index', compact('guru'));
+        $task = Task::all();
+        return view('admin.task.index', compact('task'));
     }
 
     public function create()
@@ -22,53 +22,61 @@ class TaskAdminController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // dd($request->all());
-        // Validasi data input
-        $request->validate([
-            'nama_guru' => 'required|', // Mengambil ID guru
-            'kelas' => 'required|string',
-            'status' => 'required|string',
-        ]);
+{
+    // Validasi data input
+    $request->validate([
+        'nama_guru' => 'required|string',
+        'kelas' => 'required|string',
+    ]);
 
-        // Simpan tugas ke database
-        Task::create([
-            'nama_guru' => $request->nama_guru, // Simpan ID guru dari select option
-            'kelas' => $request->kelas,
-            'status' => $request->status,
-        ]);
+    // Simpan data ke dalam database
+    Task::create([
+        'nama_guru' => $request->nama_guru,
+        'kelas' => $request->kelas,
+        'status' => 'pending',
+    ]);
 
-        return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil ditambahkan!');
-    }
+    return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil ditambahkan!');
+}
 
-    public function edit(Task $task)
-    {
-        $guru = GuruPiket::all(); // Ambil semua data guru
-        return view('admin.task.edit', compact('task', 'guru'));
-    }
+public function edit($id)
+{
+    $task = Task::findOrFail($id); // Cari task berdasarkan id
+    $gurus = GuruPiket::with('guru')->get(); // Mendapatkan data guru
+    return view('admin.task.edit', compact('task', 'gurus'));
+}
 
-    public function update(Request $request, Task $task)
-    {
-        // Validasi data input
-        $request->validate([
-            'guru_id' => 'required|exists:guru_piket,id', // Mengambil ID guru
-            'kelas' => 'required|string',
-            'status' => 'required|string',
-        ]);
+public function update(Request $request, $id)
+{
+    // Validasi data input
+    $request->validate([
+        'nama_guru' => 'required|string',
+        'kelas' => 'required|string',
+        // 'status' => 'required|in:pending,in_progress,completed', // Validasi status
+    ]);
 
-        // Update tugas di database
-        $task->update([
-            'guru_id' => $request->guru_id, // Update ID guru dari select option
-            'kelas' => $request->kelas,
-            'status' => $request->status,
-        ]);
+    // Cari task berdasarkan id
+    $task = Task::findOrFail($id);
 
-        return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil diperbarui!');
-    }
+    // Update data task
+    $task->update([
+        'nama_guru' => $request->nama_guru,
+        'kelas' => $request->kelas,
+        'status' => 'pending',
+    ]);
 
-    public function destroy(Task $task)
-    {
-        $task->delete();
-        return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil dihapus!');
-    }
+    return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil diupdate!');
+}
+
+
+public function destroy($id)
+{
+    // Cari task berdasarkan id dan hapus
+    $task = Task::findOrFail($id);
+    $task->delete();
+
+    return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil dihapus!');
+}
+
+
 }

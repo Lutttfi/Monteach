@@ -21,20 +21,23 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($task as $tasks)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td class="align-middle"></td>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $tasks->nama_guru }}</td> 
+                    <td>{{ $tasks->status }}</td>
                     <td class="align-middle">
-                        <a href="" class="btn btn-primary btn-sm">Edit</a>
-                        <form action="" method="POST" class="d-inline">
+                        <a href="{{ route('admin.task.edit', $tasks->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <form action="{{ route('admin.task.destroy', $tasks->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
                         </form>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
+            
         </table>
     </div>
 </div>

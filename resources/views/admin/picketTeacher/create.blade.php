@@ -8,7 +8,7 @@
             <form action="{{ route('admin.picketTeacher.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="nama" class="form-label text-white">Nama Guru Piket</label>
+                    <label for="nama" class="form-label text-white">Nama Guru Piket :</label>
                     <select name="guru_id" id="guru_id" class="form-select" required>
                         <option value="" disabled selected>Pilih Guru</option>
                         @foreach ($guru as $g)

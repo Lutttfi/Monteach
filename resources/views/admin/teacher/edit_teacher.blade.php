@@ -9,7 +9,7 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="nama" class="form-label text-white">Nama Guru</label>
+                    <label for="nama" class="form-label text-white">Nama Guru :</label>
                     <input type="text" class="form-control" name="nama" value="{{ $guru->nama }}" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>

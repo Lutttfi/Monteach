@@ -6,12 +6,12 @@
         <form action="{{ route('admin.task.store') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label for="kelas" class="form-label text-dark">Kelas:</label>
+                <label for="kelas" class="form-label text-dark">Kelas :</label>
                 <input type="text" class="form-control" name="kelas" required>
             </div>
 
             <div class="mb-3">
-                <label for="guru_id" class="form-label text-dark">Nama Guru Piket:</label>
+                <label for="nama_guru" class="form-label text-dark">Nama Guru Piket :</label>
                 <select name="nama_guru" class="form-control">
                     <option value="">Pilih Guru Piket</option>
                     @foreach ($gurus as $g)
