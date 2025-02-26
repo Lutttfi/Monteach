@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <h3 class="py-3">Data Guru</h3>
+    <h3 class="py-3">Daftar Guru</h3>
     <a href="{{ route('admin.teacher.create') }}" class="btn btn-secondary mb-3">Tambah Guru</a>
     @if(session('success'))
     <div id="alert-success" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
@@ -15,8 +15,8 @@
             <thead style="background-color: #009D12; color: white;">
                 <tr>
                     <th style="width:10%; border-top-left-radius: 10px;">No</th>
-                    <th class="width:50%; text-center">Nama</th>
-                    <th class="width:0%; text-center" style="border-top-right-radius: 10px;">Aksi</th>
+                    <th style="width: 43%;">Nama</th>
+                    <th style="border-top-right-radius: 10px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
