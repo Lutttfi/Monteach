@@ -15,6 +15,7 @@ Route::get('/', function () {
 
 // Route untuk halaman utama admin
 Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
 
     // Route untuk halaman teacher
     Route::get('/teacher', [TeacherAdminController::class, 'index'])->name('teacher.index');  // <-- PASTIKAN INI ADA
@@ -33,7 +34,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('/tasks/{task}', [TaskAdminController::class, 'destroy'])->name('task.destroy');
 
 
-    Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
     Route::get('/recap', [RecapAdminController::class, 'index'])->name('recap');
     Route::get('/manageUser', [ManageUserAdminController::class, 'index'])->name('manageUser');
 
