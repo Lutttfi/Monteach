@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-4" style="overflow: hidden;">
+    <div class="container mt-4" style="overflow: hidden;padding-bottom: 20px;">
         <h5 class="my-4">Edit Tugas</h5>
         <form action="{{ route('admin.task.update', $task->id) }}" method="POST">
             @csrf

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-4" style="overflow: hidden;">
+<div class="container mt-4" style="overflow: hidden;padding-bottom: 20px;">
     <h5 class="my-4">Tambah Guru</h5>
     <div class="card">
         <div class="card-body" style="background-color: #4CAF50; border-radius: 8px;">

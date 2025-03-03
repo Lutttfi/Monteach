@@ -81,8 +81,8 @@
 <body>
     <!-- Sidebar Start -->
     <nav class="sidebar text-white">
-        <div class="mb-4">
-            <h2>LOGO</h2>
+    <div style="padding-bottom: 30px; position:center;">
+            <img src="{{ asset('storage/images/logo.png') }}" alt="logo" style="width: 150px; margin-left:23px;">
         </div>
         <ul class="nav flex-column">
             <li class="nav-item mb-2">
@@ -129,7 +129,7 @@
     <div class="main-content">
         <!-- Topbar Start -->
         <div class="navbar navbar-expand-lg navbar-light bg-white">
-            <div class="container-fluid d-flex justify-content-end">
+            <div class="container-fluid d-flex justify-content-end" style="margin-right: 10px;">
                 <span class="navbar-brand me-2">Admin</span>
                 <div class="dropdown">
                     <span class="iconify dropdown-toggle" data-bs-toggle="dropdown" data-icon="fa6-solid:user" data-width="20" data-height="20" style="cursor: pointer;"></span>
