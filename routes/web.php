@@ -15,19 +15,19 @@ use App\Http\Controllers\guru\RecapGuruController;
 use App\Http\Controllers\admin\RoleAdminController;
 use App\Http\Controllers\Auth\AuthController;
 
-// Redirect default ke halaman login jika belum login
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+// // Redirect default ke halaman login jika belum login
+// Route::get('/', function () {
+//     return redirect()->route('login');
+// });
 
-// Route untuk halaman login
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+// // Route untuk halaman login
+// Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+// Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Route untuk admin setelah login
-Route::middleware('auth')->group(function () {
+// Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         // Route untuk halaman dashboard
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
@@ -75,7 +75,7 @@ Route::middleware('auth')->group(function () {
         Route::put('/role/{role}', [RoleAdminController::class, 'update'])->name('role.update');
         Route::delete('/role/{role}', [RoleAdminController::class, 'destroy'])->name('role.destroy');
     });
-});
+
     Route::prefix('guru')->name('guru.')->group(function () {
     Route::get('/dashboard', [DashboardGuruController::class, 'index'])->name('dashboard');
     Route::get('/task', [TaskGuruController::class, 'index'])->name('task');
