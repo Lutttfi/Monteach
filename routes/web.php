@@ -7,6 +7,11 @@ use App\Http\Controllers\admin\TeacherAdminController;
 use App\Http\Controllers\admin\PicketTeacherAdminController;
 use App\Http\Controllers\admin\RecapAdminController;
 use App\Http\Controllers\admin\ManageUserAdminController;
+use App\Http\Controllers\guru\DashboardGuruController;
+use App\Http\Controllers\guru\TaskGuruController;
+use App\Http\Controllers\guru\TeacherGuruController;
+use App\Http\Controllers\guru\PicketTeacherkGuruController;
+use App\Http\Controllers\guru\RecapGuruController;
 use App\Http\Controllers\admin\RoleAdminController;
 use App\Http\Controllers\Auth\AuthController;
 
@@ -71,3 +76,11 @@ Route::middleware('auth')->group(function () {
         Route::delete('/role/{role}', [RoleAdminController::class, 'destroy'])->name('role.destroy');
     });
 });
+    Route::prefix('guru')->name('guru.')->group(function () {
+    Route::get('/dashboard', [DashboardGuruController::class, 'index'])->name('dashboard');
+    Route::get('/task', [TaskGuruController::class, 'index'])->name('task');
+    Route::get('/teacher', [TeacherGuruController::class, 'index'])->name('teacher');
+    Route::get('/picketTeacher', [PicketTeacherkGuruController::class, 'index'])->name('picketTeacher');
+    Route::get('/recap', [RecapGuruController::class, 'index'])->name('recap');
+
+    });

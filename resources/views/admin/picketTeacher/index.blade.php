@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-4">
+<div class="container mt-4" style="padding-bottom: 0.5px;">
     <h3 class="py-3">Daftar Guru Piket</h3>
 
     <!-- Tombol Tambah Guru Piket -->

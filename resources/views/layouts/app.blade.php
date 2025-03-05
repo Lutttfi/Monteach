@@ -16,9 +16,30 @@
         /* Sidebar Styling */
         .sidebar {
             background-color: #009B12;
-            height: 100vh;
             width: 250px;
+            height: 100vh;
             padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+
+        .main-content {
+            margin-left: 250px; 
+            width: calc(100% - 250px);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 250px; 
+            width: calc(100% - 250px); 
+            background-color: white; 
+            z-index: 1000; 
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Tambah bayangan biar terlihat */
         }
 
         /* Menu Styling */
@@ -32,16 +53,9 @@
             transition: background 0.1s;
         }
 
-        .navbar .container-fluid {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 10px;
-        }
-
         .nav-link:hover {
             color: white;
-            background-color: inherit;
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         /* Ikon Styling */
@@ -56,28 +70,21 @@
             color: black;
         }
 
-        th {
+        th, td {
             text-align: center;
             vertical-align: middle;
         }
 
-        td {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        
     </style>
 </head>
 
 <body>
-    <div class="d-flex">
-        <!-- Sidebar Start -->
-        <nav class="sidebar text-white">
-            <div class="mb-4">
-                <h2>LOGO</h2>
-            </div>
-            <ul class="nav flex-column">
+    <!-- Sidebar Start -->
+    <nav class="sidebar text-white">
+    <div style="padding-bottom: 30px; position:center;">
+            <img src="{{ asset('storage/images/logo.png') }}" alt="logo" style="width: 150px; margin-left:23px;">
+        </div>
+        <ul class="nav flex-column">
             <li class="nav-item mb-2">
     <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
         <span class="iconify" data-icon="tabler:home" data-width="22"></span>
@@ -149,32 +156,26 @@
         </nav>
         <!-- Sidebar End -->
 
+    <!-- Konten Utama -->
+    <div class="main-content">
         <!-- Topbar Start -->
-        <div class="flex-grow-1">
-            <div class="navbar navbar-expand-lg navbar-light bg-white">
-                <div class="container-fluid d-flex justify-content-end">
+        <div class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container-fluid d-flex justify-content-end" style="margin-right: 10px;">
                 <span class="navbar-brand me-2">Admin</span>
-                <!-- Dropdown untuk Logout -->
                 <div class="dropdown">
                     <span class="iconify dropdown-toggle" data-bs-toggle="dropdown" data-icon="fa6-solid:user" data-width="20" data-height="20" style="cursor: pointer;"></span>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        {{-- <li>
-                            <form action="{{ route('') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="dropdown-item">Logout</button>
-                            </form>
-                        </li> --}}
+                        -->
                     </ul>
                 </div>
             </div>
         </div>
         <!-- Topbar End -->
 
-            <!-- Section Start -->
-            <div class="container mt-4 bg-light" style="width: 96%; height: 85%; border-radius: 10px;">
-                @yield('content')
-            </div>
-            <!-- Section End -->
+        <!-- Section Start -->
+        <!-- Section End -->
+        <div class="container mt-4 bg-light" style="width: 100%; height: 85%; border-radius: 10px;">
+            @yield('content')
         </div>
     </div>
 
