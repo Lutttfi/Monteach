@@ -3,35 +3,34 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('admin123'),
-            'role' => 'admin'
-        ]);
+        // Ambil role ID dari tabel roles
+        $adminRole = DB::table('roles')->where('name', 'admin')->value('id');
+        $guruRole = DB::table('roles')->where('name', 'guru')->value('id');
+        $siswaRole = DB::table('roles')->where('name', 'siswa')->value('id');
 
-        User::create([
-            'name' => 'Guru',
-            'email' => 'guru@gmail.com',
-            'password' => Hash::make('guru123'),
-            'role' => 'guru'
-        ]);
-
-        User::create([
-            'name' => 'Siswa',
-            'email' => 'siswa@gmail.com',
-            'password' => Hash::make('siswa123'),
-            'role' => 'siswa'
+        DB::table('users')->insert([
+            [
+                'username' => 'Davis',
+                'role_id' => $adminRole,
+                'password' => Hash::make('passwordadmin'),
+            ],
+            [
+                'username' => 'Dimas',
+                'role_id' => $guruRole,
+                'password' => Hash::make('passwordguru'),
+            ],
+            [
+                'username' => 'Dandy',
+                'role_id' => $siswaRole,
+                'password' => Hash::make('passwordsiswa'),
+            ],
         ]);
     }
 }

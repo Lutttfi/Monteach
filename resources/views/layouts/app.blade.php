@@ -109,11 +109,41 @@
     </a>
 </li>
 <li class="nav-item mb-2">
-    <a class="nav-link {{ request()->routeIs('admin.manageUser') ? 'active' : '' }}" href="{{ route('admin.manageUser') }}">
+    <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#manageUserDropdown" aria-expanded="false" aria-controls="manageUserDropdown">
         <span class="iconify" data-icon="tabler:settings" data-width="22"></span>
-        Manage User
+        Pengguna
     </a>
+    <div class="collapse {{ request()->routeIs('admin.manageUser.*') ? 'show' : '' }}" id="manageUserDropdown">
+        <ul class="nav flex-column ms-3">
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.manageUser.index') ? 'active' : '' }}" href="{{ route('admin.manageUser.index') }}">
+                    <span class="iconify" data-icon="tabler:list" data-width="18"></span>
+                    Daftar Pengguna
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.manageUser.create') ? 'active' : '' }}" href="{{ route('admin.manageUser.create') }}">
+                    <span class="iconify" data-icon="tabler:plus" data-width="18"></span>
+                    Tambah Pengguna
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.role.index') ? 'active' : '' }}" href="{{ route('admin.role.index') }}">
+                    <span class="iconify" data-icon="tabler:list" data-width="18"></span>
+                    Daftar Jabatan
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.role.create') ? 'active' : '' }}" href="{{ route('admin.role.create') }}">
+                    <span class="iconify" data-icon="tabler:plus" data-width="18"></span>
+                    Tambah Jabatan
+                </a>
+            </li>
+        </ul>
+    </div>
 </li>
+
+
 
             </ul>
         </nav>

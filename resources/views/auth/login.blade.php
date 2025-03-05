@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -12,16 +12,11 @@
             justify-content: center;
             align-items: center;
             height: 90vh;
-            background-color: white; /* Background putih */
-        }
-
-        .logo {
-            width: 100px; /* Sesuaikan ukuran logo */
-            margin-bottom: 10px;
+            background-color: white;
         }
 
         .login-container {
-            background: #50B83B; /* Warna hijau untuk login box */
+            background: #50B83B;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -31,7 +26,7 @@
         }
 
         h2 {
-            color: white; /* Supaya lebih kontras di background hijau */
+            color: white;
         }
 
         input {
@@ -55,13 +50,13 @@
             display: flex;
             align-items: center;
             font-size: 14px;
-            gap: 10px; 
+            gap: 10px;
             justify-content: flex-start;
             color: white;
         }
 
         .checkbox-container input {
-            width: 16px; 
+            width: 16px;
             height: 16px;
             margin: 0;
         }
@@ -81,6 +76,7 @@
         button:hover {
             background: #bbb;
         }
+
         .error {
             color: red;
             font-size: 14px;
@@ -90,13 +86,16 @@
 <body>
     <div class="login-container">
         <h2>LOGIN</h2>
+
         @if ($errors->any())
             <p class="error">{{ $errors->first() }}</p>
         @endif
+
         <form action="{{ route('login') }}" method="POST">
             @csrf
-            <input type="text" name="email" placeholder="Masukkan Email" required>
+            <input type="text" name="username" placeholder="Masukkan Username..." required>
             <input type="password" name="password" placeholder="Masukkan Password" required>
+
             <div class="checkbox-container">
                 <input type="checkbox" id="remember" name="remember">
                 <label for="remember">Ingatkan saya</label>

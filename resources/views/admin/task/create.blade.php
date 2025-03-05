@@ -17,7 +17,7 @@
 
             <div class="mb-3">
                 <label for="nama_guru" class="form-label text-dark">Nama Guru Piket :</label>
-                <select name="nama_guru" class="form-control">
+                <select name="nama_guru" class="form-control" required>
                     <option value="">Pilih Guru Piket</option>
                     @foreach ($gurus as $g)
                         <option value="{{ $g->guru->nama }}"
