@@ -41,7 +41,7 @@ class AuthController extends Controller
                 case 3: // Role ID untuk Siswa
                     return redirect()->route('siswa.dashboard');
                 default:
-                    return redirect()->route('home'); // Redirect default jika role tidak dikenali
+                    return redirect()->route('login'); // Redirect default jika role tidak dikenali
             }
         }
 

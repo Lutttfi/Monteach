@@ -161,8 +161,14 @@
         <!-- Topbar Start -->
         <div class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid d-flex justify-content-end" style="margin-right: 10px;">
-                <span class="navbar-brand me-2">Admin</span>
-                <div class="dropdown">
+                <span class="navbar-brand me-2">
+                    @auth
+                        {{ Auth::user()->username }}
+                    @else
+                        Admin
+                    @endauth
+                </span>
+                                <div class="dropdown">
     <span class="iconify dropdown-toggle" data-bs-toggle="dropdown" data-icon="fa6-solid:user" data-width="20" data-height="20" style="cursor: pointer;"></span>
     <ul class="dropdown-menu dropdown-menu-end">
         <li>
