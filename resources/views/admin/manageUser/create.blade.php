@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-4" style="overflow: hidden;">
+    <div class="container mt-4" style="overflow: hidden;padding-bottom:20px;">
         <h5 class="my-4">Tambah Pengguna</h5>
         <form action="{{ route('admin.manageUser.store') }}" method="POST">
             @csrf
