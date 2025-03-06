@@ -120,34 +120,35 @@
         <span class="iconify" data-icon="tabler:settings" data-width="22"></span>
         Pengguna
     </a>
-    <div class="collapse {{ request()->routeIs('admin.manageUser.*') ? 'show' : '' }}" id="manageUserDropdown">
-        <ul class="nav flex-column ms-3">
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.manageUser.index') ? 'active' : '' }}" href="{{ route('admin.manageUser.index') }}">
-                    <span class="iconify" data-icon="tabler:list" data-width="18"></span>
-                    Daftar Pengguna
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.manageUser.create') ? 'active' : '' }}" href="{{ route('admin.manageUser.create') }}">
-                    <span class="iconify" data-icon="tabler:plus" data-width="18"></span>
-                    Tambah Pengguna
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.role.index') ? 'active' : '' }}" href="{{ route('admin.role.index') }}">
-                    <span class="iconify" data-icon="tabler:list" data-width="18"></span>
-                    Daftar Jabatan
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.role.create') ? 'active' : '' }}" href="{{ route('admin.role.create') }}">
-                    <span class="iconify" data-icon="tabler:plus" data-width="18"></span>
-                    Tambah Jabatan
-                </a>
-            </li>
-        </ul>
-    </div>
+<div class="collapse {{ request()->routeIs('admin.manageUser.*') || request()->routeIs('admin.role.*') ? 'show' : '' }}" id="manageUserDropdown">
+    <ul class="nav flex-column ms-3">
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('admin.manageUser.index') ? 'active' : '' }}" href="{{ route('admin.manageUser.index') }}">
+                <span class="iconify" data-icon="mdi:account-group-outline" data-width="18"></span>
+                Daftar Pengguna
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('admin.manageUser.create') ? 'active' : '' }}" href="{{ route('admin.manageUser.create') }}">
+                <span class="iconify" data-icon="mdi:account-plus-outline" data-width="18"></span>
+                Tambah Pengguna
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('admin.role.index') ? 'active' : '' }}" href="{{ route('admin.role.index') }}">
+                <span class="iconify" data-icon="mdi:briefcase-outline" data-width="18"></span>
+                Daftar Jabatan
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('admin.role.create') ? 'active' : '' }}" href="{{ route('admin.role.create') }}">
+                <span class="iconify" data-icon="mdi:briefcase-plus-outline" data-width="18"></span>
+                Tambah Jabatan
+            </a>
+        </li>
+    </ul>
+</div>
+
 </li>
 
 
