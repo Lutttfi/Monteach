@@ -126,11 +126,17 @@
             <div class="container-fluid d-flex justify-content-end" style="margin-right: 10px;">
                 <span class="navbar-brand me-2">Guru</span>
                 <div class="dropdown">
-                    <span class="iconify dropdown-toggle" data-bs-toggle="dropdown" data-icon="fa6-solid:user" data-width="20" data-height="20" style="cursor: pointer;"></span>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        -->
-                    </ul>
-                </div>
+    <span class="iconify dropdown-toggle" data-bs-toggle="dropdown" data-icon="fa6-solid:user" data-width="20" data-height="20" style="cursor: pointer;"></span>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="dropdown-item">Logout</button>
+            </form>
+        </li>
+    </ul>
+</div>
+
             </div>
         </div>
         <!-- Topbar End -->

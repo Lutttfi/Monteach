@@ -10,24 +10,24 @@ use App\Http\Controllers\admin\ManageUserAdminController;
 use App\Http\Controllers\guru\DashboardGuruController;
 use App\Http\Controllers\guru\TaskGuruController;
 use App\Http\Controllers\guru\TeacherGuruController;
-use App\Http\Controllers\guru\PicketTeacherkGuruController;
+use App\Http\Controllers\guru\PicketTeacherGuruController;
 use App\Http\Controllers\guru\RecapGuruController;
 use App\Http\Controllers\admin\RoleAdminController;
 use App\Http\Controllers\Auth\AuthController;
 
-// // Redirect default ke halaman login jika belum login
-// Route::get('/', function () {
-//     return redirect()->route('login');
-// });
+// Redirect default ke halaman login jika belum login
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
-// // Route untuk halaman login
-// Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-// Route::post('/login', [AuthController::class, 'login']);
+// Route untuk halaman login
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Route untuk admin setelah login
-// Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         // Route untuk halaman dashboard
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
@@ -80,7 +80,8 @@ use App\Http\Controllers\Auth\AuthController;
     Route::get('/dashboard', [DashboardGuruController::class, 'index'])->name('dashboard');
     Route::get('/task', [TaskGuruController::class, 'index'])->name('task');
     Route::get('/teacher', [TeacherGuruController::class, 'index'])->name('teacher');
-    Route::get('/picketTeacher', [PicketTeacherkGuruController::class, 'index'])->name('picketTeacher');
+    Route::get('/picketTeacher', [PicketTeacherGuruController::class, 'index'])->name('picketTeacher');
     Route::get('/recap', [RecapGuruController::class, 'index'])->name('recap');
 
     });
+});
