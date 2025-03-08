@@ -40,6 +40,8 @@ class AuthController extends Controller
                     return redirect()->route('guru.dashboard');
                 case 3: // Role ID untuk Siswa
                     return redirect()->route('siswa.dashboard');
+                case 4: // Role ID untuk GuruPiket
+                    return redirect()->route('guruPiket.dashboard');
                 default:
                     return redirect()->route('login'); // Redirect default jika role tidak dikenali
             }

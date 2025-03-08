@@ -10,11 +10,16 @@ class Task extends Model
     use HasFactory;
 
     // Kolom yang dapat diisi (mass assignable)
-    protected $fillable = ['nama_guru', 'kelas', 'status', 'tanggal_tugas'];
+    protected $fillable = ['guru_id', 'kelas', 'status', 'tanggal_tugas'];
 
     // Jika relasi dengan User benar-benar diperlukan, pertahankan ini
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function guru()
+    {
+        return $this->belongsTo(User::class, 'guru_id');
     }
 }

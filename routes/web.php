@@ -14,8 +14,10 @@ use App\Http\Controllers\guru\TeacherGuruController;
 use App\Http\Controllers\guru\PicketTeacherGuruController;
 use App\Http\Controllers\guru\RecapGuruController;
 use App\Http\Controllers\siswa\DashboardSiswaController;
-use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\siswa\TaskSiswaController;
+use App\Http\Controllers\guruPiket\DashboardGuruPiketController;
+use App\Http\Controllers\guruPiket\TaskGuruPiketController;
+use App\Http\Controllers\Auth\AuthController;
 
 // Redirect default ke halaman login jika belum login
 Route::get('/', function () {
@@ -86,8 +88,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/recap', [RecapGuruController::class, 'index'])->name('recap');
     });
 
+    Route::prefix('guruPiket')->name('guruPiket.')->group(function () {
+        Route::get('/dashboard', [DashboardGuruPiketController::class, 'index'])->name('dashboard');
+        Route::get('/task', [TaskGuruPiketController::class, 'index'])->name('task');
+    });
+
     Route::prefix('siswa')->name('siswa.')->group(function () {
         Route::get('/dashboard', [DashboardSiswaController::class, 'index'])->name('dashboard');
         Route::get('/task', [TaskSiswaController::class, 'index'])->name('task');
     });
+
 });

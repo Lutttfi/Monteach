@@ -19,16 +19,16 @@
             </div>
 
             <div class="mb-3">
-                <label for="nama_guru" class="form-label text-dark">Nama Guru Piket :</label>
-                <select name="nama_guru" class="form-control">
-                    <option value="">Pilih Guru Piket</option>
-                    @foreach ($gurus as $g)
-                        <option value="{{ $g->guru->nama }}"
-                            {{ $task->nama_guru == $g->guru->nama ? 'selected' : '' }}>
-                            {{ $g->guru->nama }}
-                        </option>
-                    @endforeach
-                </select>
+            <label for="guru_id">Pilih Guru</label>
+            <select name="guru_id" id="guru_id" class="form-control" required>
+                <option value="">-- Pilih Guru --</option>
+                @foreach ($gurus as $guru)
+                    <option value="{{ $guru->id }}" {{ isset($task) && $task->guru_id == $guru->id ? 'selected' : '' }}>
+                        {{ $guru->name }}
+                    </option>
+                @endforeach
+            </select>
+
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>

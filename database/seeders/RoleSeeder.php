@@ -14,6 +14,7 @@ class RoleSeeder extends Seeder
             ['name' => 'admin'],
             ['name' => 'guru'],
             ['name' => 'siswa'],
+            ['name' => 'guruPiket'],
         ]);
     }
 }

@@ -3,83 +3,75 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Task;
-use App\Models\GuruPiket;
+use App\Models\User;
 
 class TaskAdminController extends Controller
 {
     public function index()
     {
-        $task = Task::all();
-        return view('admin.task.index', compact('task'));
+        $tasks = Task::with('guru')->get(); // Ambil semua task dengan data guru
+        return view('admin.task.index', compact('tasks'));
     }
 
     public function create()
     {
-        $gurus = GuruPiket::with('guru')->get();
-        return view('admin.task.create', compact('gurus')); // Mengirim variabel $guru ke view
+        $guruPiketRole = DB::table('roles')->where('name', 'guruPiket')->value('id');
+        $gurus = User::where('role_id', $guruPiketRole)->get();
+        return view('admin.task.create', compact('gurus')); 
     }
 
     public function store(Request $request)
-{
-    // Validasi data input
-    $request->validate([
-        'nama_guru' => 'required|string',
-        'kelas' => 'required|string',
-        'tanggal_tugas' => 'required|date',
-    ]);
+    {
+        $request->validate([
+            'guru_id' => 'required|exists:users,id', // Pastikan guru_id valid
+            'kelas' => 'required|string',
+            'tanggal_tugas' => 'required|date',
+        ]);
 
-    // Simpan data ke dalam database
-    Task::create([
-        'nama_guru' => $request->nama_guru,
-        'kelas' => $request->kelas,
-        'status' => 'pending',
-        'tanggal_tugas' => $request->tanggal_tugas,
-    ]);
+        Task::create([
+            'guru_id' => $request->guru_id,
+            'kelas' => $request->kelas,
+            'status' => 'pending',
+            'tanggal_tugas' => $request->tanggal_tugas,
+        ]);
 
-    return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil ditambahkan!');
-}
+        return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil ditambahkan!');
+    }
 
-public function edit($id)
-{
-    $task = Task::findOrFail($id); // Cari task berdasarkan id
-    $gurus = GuruPiket::with('guru')->get(); // Mendapatkan data guru
-    return view('admin.task.edit', compact('task', 'gurus'));
-}
+    public function edit($id)
+    {
+        $task = Task::findOrFail($id);
+        $gurus = User::where('role', 'guruPiket')->get(); 
+        return view('admin.task.edit', compact('task', 'gurus'));
+    }
 
-public function update(Request $request, $id)
-{
-    // Validasi data input
-    $request->validate([
-        'nama_guru' => 'required|string',
-        'kelas' => 'required|string',
-        'tanggal_tugas' => 'required|date',
-    ]);
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'guru_id' => 'required|exists:users,id',
+            'kelas' => 'required|string',
+            'tanggal_tugas' => 'required|date',
+        ]);
 
-    // Cari task berdasarkan id
-    $task = Task::findOrFail($id);
+        $task = Task::findOrFail($id);
+        $task->update([
+            'guru_id' => $request->guru_id,
+            'kelas' => $request->kelas,
+            'status' => 'pending',
+            'tanggal_tugas' => $request->tanggal_tugas,
+        ]);
 
-    // Update data task
-    $task->update([
-        'nama_guru' => $request->nama_guru,
-        'kelas' => $request->kelas,
-        'status' => 'pending',
-        'tanggal_tugas' => $request->tanggal_tugas,
-    ]);
+        return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil diupdate!');
+    }
 
-    return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil diupdate!');
-}
+    public function destroy($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->delete();
 
-
-public function destroy($id)
-{
-    // Cari task berdasarkan id dan hapus
-    $task = Task::findOrFail($id);
-    $task->delete();
-
-    return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil dihapus!');
-}
-
-
+        return redirect()->route('admin.task.index')->with('success', 'Tugas berhasil dihapus!');
+    }
 }

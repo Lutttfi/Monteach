@@ -16,16 +16,14 @@
             </div>
 
             <div class="mb-3">
-                <label for="nama_guru" class="form-label text-dark">Nama Guru Piket :</label>
-                <select name="nama_guru" class="form-control" required>
-                    <option value="">Pilih Guru Piket</option>
-                    @foreach ($gurus as $g)
-                        <option value="{{ $g->guru->nama }}"
-                            {{ old('guru_id', $task->guru_id ?? '') == $g->id ? 'selected' : '' }}>
-                            {{ $g->guru->nama }}
-                        </option>
-                    @endforeach
-                </select>
+            <label for="guru_id">Pilih Guru</label>
+            <select name="guru_id" id="guru_id" class="form-control" required>
+    <option value="">-- Pilih Guru --</option>
+    @foreach ($gurus as $guru)
+        <option value="{{ $guru->id }}">{{ $guru->username }}</option>
+    @endforeach
+</select>
+
             </div>
             <button type="submit" class="btn btn-primary">Tambah</button>
             <a href="{{ route('admin.task.index') }}" class="btn btn-danger">Kembali</a>

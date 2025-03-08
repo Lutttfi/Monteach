@@ -14,22 +14,33 @@ class UserSeeder extends Seeder
         $adminRole = DB::table('roles')->where('name', 'admin')->value('id');
         $guruRole = DB::table('roles')->where('name', 'guru')->value('id');
         $siswaRole = DB::table('roles')->where('name', 'siswa')->value('id');
+        $guruPiketRole = DB::table('roles')->where('name', 'guruPiket')->value('id');
 
         DB::table('users')->insert([
             [
                 'username' => 'Davis',
                 'role_id' => $adminRole,
-                'password' => Hash::make('passwordadmin'),
+                'password' => Hash::make('admin123'),
             ],
             [
                 'username' => 'Dimas',
                 'role_id' => $guruRole,
-                'password' => Hash::make('passwordguru'),
+                'password' => Hash::make('guru123'),
             ],
             [
                 'username' => 'Dandy',
                 'role_id' => $siswaRole,
-                'password' => Hash::make('passwordsiswa'),
+                'password' => Hash::make('siswa123'),
+            ],
+            [
+                'username' => 'Rina',
+                'role_id' => $guruPiketRole,
+                'password' => Hash::make('piket123'),
+            ],
+            [
+                'username' => 'Iben',
+                'role_id' => $guruPiketRole,
+                'password' => Hash::make('piket123'),
             ],
         ]);
     }
