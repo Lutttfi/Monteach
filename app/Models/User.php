@@ -20,10 +20,10 @@ class User extends Authenticatable
     }
 
     // Encrypt password automatically
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
+    // public function setPasswordAttribute($value)
+    // {
+    //     $this->attributes['password'] = bcrypt($value);
+    // }
 
     public function tasks()
     {

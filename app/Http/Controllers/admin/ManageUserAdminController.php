@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -33,11 +34,14 @@ class ManageUserAdminController extends Controller
         ]);
     
         // Simpan data ke database
-        User::create([
+        $user = User::create([
             'username' => $request->username,
             'password' => Hash::make($request->password), // Hash password sebelum menyimpan
             'role_id' => $request->jabatan, // Simpan role sesuai dengan ID yang dipilih
         ]);
+
+        // Trigger event Registered setelah user berhasil ditambahkan
+        event(new Registered($user));
     
         // Redirect dengan pesan sukses
         return redirect()->route('admin.manageUser.index')->with('success', 'Pengguna berhasil ditambahkan!');
