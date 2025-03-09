@@ -97,6 +97,18 @@
                     Tugas
                 </a>
             </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link {{ request()->routeIs('siswa.teacher') ? 'active' : '' }}" href="{{ route('siswa.teacher') }}">
+                    <span class="iconify" data-icon="tabler:user" data-width="22"></span>
+                    Guru
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link {{ request()->routeIs('siswa.picketTeacher') ? 'active' : '' }}" href="{{ route('siswa.picketTeacher') }}">
+                    <span class="iconify" data-icon="tabler:users" data-width="22"></span>
+                    Guru Piket
+                </a>
+            </li>
         </ul>
     </nav>
     <!-- Sidebar End -->

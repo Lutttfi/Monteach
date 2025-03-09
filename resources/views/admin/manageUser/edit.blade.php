@@ -29,7 +29,7 @@
                 <input type="password" class="form-control" name="password" value="{{ old('password', $user->password ?? '') }}" required>
             </div>             --}}
 
-            <button type="submit" class="btn btn-primary">Tambah</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
             <a href="{{ route('admin.manageUser.index') }}" class="btn btn-danger">Kembali</a>
         </form>
     </div>

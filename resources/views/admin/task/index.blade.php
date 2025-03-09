@@ -14,10 +14,10 @@
         <table class="table table-bordered text-center">
             <thead style="background-color: #009D12; color: white;">
                 <tr>
-                    <th style="width:10px;">No</th>
-                    <th style="width:90px;">Nama</th>
-                    <th style="width:40px;">Status</th>
-                    <th style="width:40px;">Aksi</th>
+                    <th style="width:10%; border-top-left-radius: 10px;">No</th>
+                    <th style="width:30%;">Nama</th>
+                    <th style="width:30%;">Status</th>
+                    <th style="width:20%; border-top-right-radius: 10px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>

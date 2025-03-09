@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\GuruPiket;
 use App\Models\Guru;
+use App\Models\User;
 
 class PicketTeacherAdminController extends Controller
 {
     public function index()
     {
-        $guruPiket = GuruPiket::all();
+        $guruPiket = User::whereHas('role', function ($query) {
+            $query->where('name', 'guruPiket');
+        })->get();        
         return view('admin.picketTeacher.index', compact('guruPiket'));
     }
 

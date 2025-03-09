@@ -4,10 +4,6 @@
 <div class="container mt-4" style="padding-bottom: 0.5px;">
     <h3 class="py-3">Daftar Guru Piket</h3>
 
-    <!-- Tombol Tambah Guru Piket -->
-
-
-
     <!-- Tabel Guru Piket -->
     <table class="table table-bordered">
         <thead style="background-color:  #009D12; color: white;">
@@ -20,7 +16,7 @@
     @foreach ($guruPiket as $piket)
     <tr>
         <td>{{ $loop->iteration }}</td>
-        <td>{{ $piket->guru->nama }}</td>
+        <td>{{ $piket->username }}</td>
     </tr>
     @endforeach
 </tbody>

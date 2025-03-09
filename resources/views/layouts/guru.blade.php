@@ -92,12 +92,6 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a class="nav-link {{ request()->routeIs('guru.task') ? 'active' : '' }}" href="{{ route('guru.task') }}">
-                    <span class="iconify" data-icon="tabler:clipboard-list" data-width="22"></span>
-                    Tugas
-                </a>
-            </li>
-            <li class="nav-item mb-2">
                 <a class="nav-link {{ request()->routeIs('guru.teacher') ? 'active' : '' }}" href="{{ route('guru.teacher') }}">
                     <span class="iconify" data-icon="tabler:user" data-width="22"></span>
                     Guru

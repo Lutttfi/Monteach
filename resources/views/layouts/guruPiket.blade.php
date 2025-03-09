@@ -97,7 +97,7 @@
                     Tugas
                 </a>
             </li>
-            <!-- <li class="nav-item mb-2">
+            <li class="nav-item mb-2">
                 <a class="nav-link {{ request()->routeIs('guru.teacher') ? 'active' : '' }}" href="{{ route('guru.teacher') }}">
                     <span class="iconify" data-icon="tabler:user" data-width="22"></span>
                     Guru
@@ -114,7 +114,7 @@
                     <span class="iconify" data-icon="tabler:report" data-width="22"></span>
                     Rekap
                 </a>
-            </li> -->
+            </li>
         </ul>
     </nav>
     <!-- Sidebar End -->

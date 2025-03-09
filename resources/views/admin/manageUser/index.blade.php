@@ -15,9 +15,9 @@
             <thead style="background-color: #009D12; color: white;">
                 <tr>
                     <th style="width:10%; border-top-left-radius: 10px;">No</th>
-                    <th class="width:60%; text-center">Username</th>
-                    <th class="width:60%; text-center">Jabatan</th>
-                    <th class="width:10%; text-center" style="border-top-right-radius: 10px;">Aksi</th>
+                    <th class="text-center" style="width:30%;">Username</th>
+                    <th class="text-center " style="width:30%;">Jabatan</th>
+                    <th class="text-center" style="width:20%; border-top-right-radius: 10px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>

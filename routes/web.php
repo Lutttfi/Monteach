@@ -1,23 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\DashboardAdminController;
-use App\Http\Controllers\admin\TaskAdminController;
-use App\Http\Controllers\admin\TeacherAdminController;
-use App\Http\Controllers\admin\PicketTeacherAdminController;
-use App\Http\Controllers\admin\RecapAdminController;
-use App\Http\Controllers\admin\ManageUserAdminController;
-use App\Http\Controllers\admin\RoleAdminController;
-use App\Http\Controllers\guru\DashboardGuruController;
-use App\Http\Controllers\guru\TaskGuruController;
-use App\Http\Controllers\guru\TeacherGuruController;
-use App\Http\Controllers\guru\PicketTeacherGuruController;
-use App\Http\Controllers\guru\RecapGuruController;
-use App\Http\Controllers\siswa\DashboardSiswaController;
-use App\Http\Controllers\siswa\TaskSiswaController;
-use App\Http\Controllers\guruPiket\DashboardGuruPiketController;
-use App\Http\Controllers\guruPiket\TaskGuruPiketController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\guru\TaskGuruController;
+use App\Http\Controllers\guru\RecapGuruController;
+use App\Http\Controllers\admin\RoleAdminController;
+use App\Http\Controllers\admin\TaskAdminController;
+use App\Http\Controllers\siswa\TaskSiswaController;
+use App\Http\Controllers\admin\RecapAdminController;
+use App\Http\Controllers\guru\TeacherGuruController;
+use App\Http\Controllers\admin\TeacherAdminController;
+use App\Http\Controllers\guru\DashboardGuruController;
+use App\Http\Controllers\siswa\TeacherSiswaController;
+use App\Http\Controllers\admin\DashboardAdminController;
+use App\Http\Controllers\siswa\DashboardSiswaController;
+use App\Http\Controllers\admin\ManageUserAdminController;
+use App\Http\Controllers\guru\PicketTeacherGuruController;
+use App\Http\Controllers\guruPiket\TaskGuruPiketController;
+use App\Http\Controllers\admin\PicketTeacherAdminController;
+use App\Http\Controllers\siswa\PicketTeacherSiswaController;
+use App\Http\Controllers\guruPiket\TeacherGuruPiketController;
+use App\Http\Controllers\guruPiket\DashboardGuruPiketController;
+use App\Http\Controllers\guruPiket\PicketTeacherGuruPiketController;
+
 
 // Redirect default ke halaman login jika belum login
 Route::get('/', function () {
@@ -82,7 +87,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('guru')->name('guru.')->group(function () {
         Route::get('/dashboard', [DashboardGuruController::class, 'index'])->name('dashboard');
-        Route::get('/task', [TaskGuruController::class, 'index'])->name('task');
+        // Route::get('/task', [TaskGuruController::class, 'index'])->name('task');
         Route::get('/teacher', [TeacherGuruController::class, 'index'])->name('teacher');
         Route::get('/picketTeacher', [PicketTeacherGuruController::class, 'index'])->name('picketTeacher');
         Route::get('/recap', [RecapGuruController::class, 'index'])->name('recap');
@@ -91,11 +96,15 @@ Route::middleware('auth')->group(function () {
     Route::prefix('guruPiket')->name('guruPiket.')->group(function () {
         Route::get('/dashboard', [DashboardGuruPiketController::class, 'index'])->name('dashboard');
         Route::get('/task', [TaskGuruPiketController::class, 'index'])->name('task');
+        Route::get('/teacher', [TeacherGuruPiketController::class, 'index'])->name('teacher');
+        Route::get('/picketTeacher', [PicketTeacherGuruPiketController::class, 'index'])->name('picketTeacher');
     });
 
     Route::prefix('siswa')->name('siswa.')->group(function () {
         Route::get('/dashboard', [DashboardSiswaController::class, 'index'])->name('dashboard');
         Route::get('/task', [TaskSiswaController::class, 'index'])->name('task');
+        Route::get('/teacher', [TeacherSiswaController::class, 'index'])->name('teacher');
+        Route::get('/picketTeacher', [PicketTeacherSiswaController::class, 'index'])->name('picketTeacher');
     });
 
 });
