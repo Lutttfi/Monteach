@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\guruPiket;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Rekap;
+use Illuminate\Http\Request;
 
-class RecapAdminController extends Controller
+class RecapGuruPiketController extends Controller
 {
     public function index(Request $request)
     {
@@ -24,7 +24,7 @@ class RecapAdminController extends Controller
             ->where('tahun', $tahun)
             ->get();
     
-        return view('admin.recap', compact('rekaps', 'bulanList', 'tahunList'));
+        return view('guruPiket.recap', compact('rekaps', 'bulanList', 'tahunList'));
     }
     
 }

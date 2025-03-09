@@ -24,7 +24,7 @@
                 <option value="">-- Pilih Guru --</option>
                 @foreach ($gurus as $guru)
                     <option value="{{ $guru->id }}" {{ isset($task) && $task->guru_id == $guru->id ? 'selected' : '' }}>
-                        {{ $guru->name }}
+                        {{ $guru->username }}
                     </option>
                 @endforeach
             </select>

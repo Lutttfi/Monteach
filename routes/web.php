@@ -19,9 +19,11 @@ use App\Http\Controllers\guru\PicketTeacherGuruController;
 use App\Http\Controllers\guruPiket\TaskGuruPiketController;
 use App\Http\Controllers\admin\PicketTeacherAdminController;
 use App\Http\Controllers\siswa\PicketTeacherSiswaController;
+use App\Http\Controllers\siswa\KonfirmasiSiswaController;
 use App\Http\Controllers\guruPiket\TeacherGuruPiketController;
 use App\Http\Controllers\guruPiket\DashboardGuruPiketController;
 use App\Http\Controllers\guruPiket\PicketTeacherGuruPiketController;
+use App\Http\Controllers\guruPiket\RecapGuruPiketController;
 
 
 // Redirect default ke halaman login jika belum login
@@ -96,15 +98,20 @@ Route::middleware('auth')->group(function () {
     Route::prefix('guruPiket')->name('guruPiket.')->group(function () {
         Route::get('/dashboard', [DashboardGuruPiketController::class, 'index'])->name('dashboard');
         Route::get('/task', [TaskGuruPiketController::class, 'index'])->name('task');
+        Route::get('/task/{id}/absen', [TaskGuruPiketController::class, 'absen'])->name('absen');
+        Route::post('/task/{id}/submitAbsen', [TaskGuruPiketController::class, 'submitAbsen'])->name('submitAbsen');;
         Route::get('/teacher', [TeacherGuruPiketController::class, 'index'])->name('teacher');
         Route::get('/picketTeacher', [PicketTeacherGuruPiketController::class, 'index'])->name('picketTeacher');
+        Route::get('/recap', [RecapGuruPiketController::class, 'index'])->name('recap');
     });
 
     Route::prefix('siswa')->name('siswa.')->group(function () {
         Route::get('/dashboard', [DashboardSiswaController::class, 'index'])->name('dashboard');
-        Route::get('/task', [TaskSiswaController::class, 'index'])->name('task');
+        Route::get('/task', [KonfirmasiSiswaController::class, 'task'])->name('task');
         Route::get('/teacher', [TeacherSiswaController::class, 'index'])->name('teacher');
         Route::get('/picketTeacher', [PicketTeacherSiswaController::class, 'index'])->name('picketTeacher');
+        Route::get('/konfirmasi', [KonfirmasiSiswaController::class, 'index'])->name('konfirmasi.index');
+        Route::post('/konfirmasi/{id}', [KonfirmasiSiswaController::class, 'konfirmasi'])->name('konfirmasi');
     });
 
 });

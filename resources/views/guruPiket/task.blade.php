@@ -29,7 +29,13 @@
                     <td>{{ $task->kelas }}</td>
                     <td>{{ $task->tanggal_tugas }}</td>
                     <td>{{ ucfirst($task->status) }}</td>
-
+                    <td>
+                        @if ($task->status == 'pending')
+                        <a href="{{ route('guruPiket.absen', $task->id) }}" class="btn btn-success btn-sm">Absen</a>
+                        @else
+                        <button class="btn btn-secondary btn-sm" disabled>Sudah Dikerjakan</button>
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

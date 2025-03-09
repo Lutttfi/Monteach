@@ -10,7 +10,7 @@ class TeacherGuruPiketController extends Controller
 {
     public function index()
     {
-        $teachers = Guru::all();
-        return view('guruPiket.teacher', compact('teachers'));
+        $guru = Guru::all();
+        return view('guruPiket.teacher', compact('guru'));
     }
 }

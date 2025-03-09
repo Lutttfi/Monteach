@@ -98,19 +98,19 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a class="nav-link {{ request()->routeIs('guru.teacher') ? 'active' : '' }}" href="{{ route('guru.teacher') }}">
+                <a class="nav-link {{ request()->routeIs('guruPiket.teacher') ? 'active' : '' }}" href="{{ route('guruPiket.teacher') }}">
                     <span class="iconify" data-icon="tabler:user" data-width="22"></span>
                     Guru
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a class="nav-link {{ request()->routeIs('guru.picketTeacher') ? 'active' : '' }}" href="{{ route('guru.picketTeacher') }}">
+                <a class="nav-link {{ request()->routeIs('guruPiket.picketTeacher') ? 'active' : '' }}" href="{{ route('guruPiket.picketTeacher') }}">
                     <span class="iconify" data-icon="tabler:users" data-width="22"></span>
                     Guru Piket
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a class="nav-link {{ request()->routeIs('guru.recap') ? 'active' : '' }}" href="{{ route('guru.recap') }}">
+                <a class="nav-link {{ request()->routeIs('guruPiket.recap') ? 'active' : '' }}" href="{{ route('guruPiket.recap') }}">
                     <span class="iconify" data-icon="tabler:report" data-width="22"></span>
                     Rekap
                 </a>

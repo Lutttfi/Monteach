@@ -1,4 +1,4 @@
-@extends('layouts.guru')
+@extends('layouts.guruPiket')
 
 @section('content')
 <div class="container mt-4">
