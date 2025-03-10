@@ -20,7 +20,7 @@ class TaskAdminController extends Controller
     {
         $guruPiketRole = DB::table('roles')->where('name', 'guruPiket')->value('id');
         $gurus = User::where('role_id', $guruPiketRole)->get();
-        return view('admin.task.create', compact('gurus')); 
+        return view('admin.task.create', compact('gurus'));
     }
 
     public function store(Request $request)
@@ -44,7 +44,9 @@ class TaskAdminController extends Controller
     public function edit($id)
     {
         $task = Task::findOrFail($id);
-        $gurus = User::where('role', 'guruPiket')->get(); 
+
+        $guruPiketRole = DB::table('roles')->where('name', 'guruPiket')->value('id');
+        $gurus = User::where('role_id', $guruPiketRole)->get();
         return view('admin.task.edit', compact('task', 'gurus'));
     }
 

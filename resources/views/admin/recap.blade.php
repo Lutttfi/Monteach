@@ -42,7 +42,7 @@
                     <th>Nama Guru</th>
                     <th>Jumlah Hadir</th>
                     <th>Jumlah Tidak Hadir</th>
-                    <th>Tidak Diabsen oleh Guru Piket</th>
+                    {{-- <th>Tidak Diabsen oleh Guru Piket</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -52,7 +52,7 @@
                     <td>{{ $rekap->guru->nama }}</td>
                     <td>{{ $rekap->jumlah_hadir }}</td>
                     <td>{{ $rekap->jumlah_tidak_hadir }}</td>
-                    <td>{{ $rekap->tidak_diabsen }}</td>
+                    {{-- <td>{{ $rekap->tidak_diabsen }}</td> --}}
                 </tr>
                 @endforeach
             </tbody>

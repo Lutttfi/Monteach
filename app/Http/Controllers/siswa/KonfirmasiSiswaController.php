@@ -49,12 +49,12 @@ class KonfirmasiSiswaController extends Controller
             ]);
         }
 
-        $task = Task::findOrFail($id);
+        // $task = Task::findOrFail($id);
         Task::where('guru_id', $absen->guru_piket_id)
             ->where('kelas', $absen->kelas)
             ->where('tanggal_tugas', $absen->tanggal)
             ->update(['status' => 'completed']);
-            $task->update(['status' => 'completed']);
+            // $task->update(['status' => 'completed']);
 
         return redirect()->back()->with('success', 'Absen berhasil dikonfirmasi!');
     }
