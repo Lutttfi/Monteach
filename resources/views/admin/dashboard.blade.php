@@ -8,7 +8,7 @@
     <div class="text-center mb-4">
     <a href="{{ url('storage/jadwal_pelajaran.pdf') }}" target="_blank">
 
-            <img src="{{ asset('foto/mapelbg.png') }}" alt="Jadwal Pelajaran" class="img-fluid shadow rounded" style="width: 90%;">
+            <img src="{{ asset('foto/mapelbg.jpg') }}" alt="Jadwal Pelajaran" class="img-fluid shadow rounded" style="width: 90%;">
         </a>
     </div>
 
