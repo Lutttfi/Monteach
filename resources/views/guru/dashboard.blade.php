@@ -31,7 +31,7 @@
                             <tbody>
                                 @forelse($jadwalHariIni as $jadwal)
                                 <tr>
-                                    <td>{{ $jadwal->nama_guru }}</td>
+                                    <td>{{ $jadwal->guru->username }}</td>
                                     <td>{{ $jadwal->kelas }}</td>
                                 </tr>
                                 @empty
@@ -63,7 +63,7 @@
                             <tbody>
                                 @forelse($jadwalBesok as $jadwal)
                                 <tr>
-                                    <td>{{ $jadwal->nama_guru }}</td>
+                                    <td>{{ $jadwal->guru->username }}</td>
                                     <td>{{ $jadwal->kelas }}</td>
                                 </tr>
                                 @empty
