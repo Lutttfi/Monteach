@@ -35,8 +35,15 @@
                 </tr>
                 @endforeach
             </tbody>
-            
         </table>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <span>Showing {{ $roles->firstItem() }} to {{ $roles->lastItem() }} of {{ $roles->total() }} results</span>
+            </div>
+            <div>
+                {{ $roles->links('pagination::bootstrap-4') }} <!-- Menambahkan pagination style Bootstrap -->
+            </div>
+        </div>
     </div>
 </div>
 @endsection

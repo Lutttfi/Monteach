@@ -22,7 +22,7 @@ class RecapGuruPiketController extends Controller
         $rekaps = Rekap::with('guru')
             ->where('bulan', $bulan)
             ->where('tahun', $tahun)
-            ->get();
+            ->paginate(10);
     
         return view('guruPiket.recap', compact('rekaps', 'bulanList', 'tahunList'));
     }

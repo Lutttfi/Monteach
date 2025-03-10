@@ -57,6 +57,14 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <span>Showing {{ $rekaps->firstItem() }} to {{ $rekaps->lastItem() }} of {{ $rekaps->total() }} results</span>
+            </div>
+            <div>
+                {{ $rekaps->links('pagination::bootstrap-4') }} <!-- Menambahkan pagination style Bootstrap -->
+            </div>
+        </div>
     </div>
 </div>
 @endsection

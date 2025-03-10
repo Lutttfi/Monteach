@@ -10,7 +10,7 @@ class TeacherSiswaController extends Controller
 {
     public function index()
     {
-        $teachers = Guru::all();
+        $teachers = Guru::paginate(10);
         return view('siswa.teacher', compact('teachers'));
     }
 }

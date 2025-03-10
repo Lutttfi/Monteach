@@ -22,7 +22,7 @@ class RecapAdminController extends Controller
         $rekaps = Rekap::with('guru')
             ->where('bulan', $bulan)
             ->where('tahun', $tahun)
-            ->get();
+            ->paginate(10);
     
         return view('admin.recap', compact('rekaps', 'bulanList', 'tahunList'));
     }

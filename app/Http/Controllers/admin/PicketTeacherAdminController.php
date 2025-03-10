@@ -14,7 +14,7 @@ class PicketTeacherAdminController extends Controller
     {
         $guruPiket = User::whereHas('role', function ($query) {
             $query->where('name', 'guruPiket');
-        })->get();        
+        })->paginate(10);        
         return view('admin.picketTeacher.index', compact('guruPiket'));
     }
 

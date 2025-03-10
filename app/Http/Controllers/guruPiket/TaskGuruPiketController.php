@@ -15,7 +15,7 @@ class TaskGuruPiketController extends Controller
     public function index()
 {
     // Ambil task yang ditugaskan ke guru piket yang sedang login
-    $tasks = Task::where('guru_id', Auth::id())->get();
+    $tasks = Task::where('guru_id', Auth::id())->paginate(5);
 
     return view('guruPiket.task', compact('tasks'));
 }

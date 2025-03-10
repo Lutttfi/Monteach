@@ -20,6 +20,15 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <span>Showing {{ $teachers->firstItem() }} to {{ $teachers->lastItem() }} of {{ $teachers->total() }}
+                    results</span>
+            </div>
+            <div>
+                {{ $teachers->links('pagination::bootstrap-4') }} <!-- Menambahkan pagination style Bootstrap -->
+            </div>
+        </div>
     </div>
 </div>
 @endsection

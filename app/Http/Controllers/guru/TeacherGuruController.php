@@ -10,7 +10,7 @@ class TeacherGuruController extends Controller
 {
     public function index()
     {
-        $guru = Guru::all();
+        $guru = Guru::paginate(10);
         return view('guru.teacher', compact('guru'));
     }
 }

@@ -12,7 +12,7 @@ class PicketTeacherGuruController extends Controller
     {
         $guruPiket = User::whereHas('role', function ($query) {
             $query->where('name', 'guruPiket');
-        })->get();         
+        })->paginate(5);         
         return view('guru.picketTeacher', compact('guruPiket'));
     }
 }

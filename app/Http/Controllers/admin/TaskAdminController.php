@@ -12,7 +12,7 @@ class TaskAdminController extends Controller
 {
     public function index()
     {
-        $tasks = Task::with('guru')->get(); // Ambil semua task dengan data guru
+        $tasks = Task::with('guru')->paginate(5); // Ambil semua task dengan data guru
         return view('admin.task.index', compact('tasks'));
     }
 
