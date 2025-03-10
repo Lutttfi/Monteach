@@ -100,6 +100,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/task', [TaskGuruPiketController::class, 'index'])->name('task');
         Route::get('/task/{id}/absen', [TaskGuruPiketController::class, 'absen'])->name('absen');
         Route::post('/task/{id}/submitAbsen', [TaskGuruPiketController::class, 'submitAbsen'])->name('submitAbsen');;
+        Route::get('/cek-tidak-diabsen', [TaskGuruPiketController::class, 'cekDanUpdateTidakDiabsen']);
         Route::get('/teacher', [TeacherGuruPiketController::class, 'index'])->name('teacher');
         Route::get('/picketTeacher', [PicketTeacherGuruPiketController::class, 'index'])->name('picketTeacher');
         Route::get('/recap', [RecapGuruPiketController::class, 'index'])->name('recap');

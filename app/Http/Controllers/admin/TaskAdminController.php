@@ -6,14 +6,26 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Task;
+use App\Models\rekap;
 use App\Models\User;
 
 class TaskAdminController extends Controller
 {
     public function index()
     {
+        $this->cekDanUpdateTidakDiabsen();
         $tasks = Task::with('guru')->get(); // Ambil semua task dengan data guru
         return view('admin.task.index', compact('tasks'));
+    }
+
+    private function cekDanUpdateTidakDiabsen()
+    {
+        // Cek apakah waktu sekarang sudah pukul 23:00
+        if (now()->format('H:i') === '15:00') {
+            Task::where('status', 'pending')
+                ->whereDate('created_at', today()) // Hanya tugas hari ini
+                ->update(['status' => 'tidak_absen']);
+        }
     }
 
     public function create()
