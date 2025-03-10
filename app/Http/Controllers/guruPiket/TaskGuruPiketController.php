@@ -8,17 +8,20 @@ use App\Models\Task;
 use App\Models\Absen;
 use App\Models\Guru;
 use App\Models\User;
+use App\Models\Rekap;
 use Illuminate\Support\Facades\Auth;
 
 class TaskGuruPiketController extends Controller
 {
     public function index()
-{
-    // Ambil task yang ditugaskan ke guru piket yang sedang login
-    $tasks = Task::where('guru_id', Auth::id())->paginate(5);
+    {
+        // Ambil task yang ditugaskan ke guru piket yang sedang login
+        $tasks = Task::where('guru_id', Auth::id())
+        ->whereDate('tanggal_tugas', now()->toDateString()) // ✅ Panggil sebelum get()
+        ->get();
 
-    return view('guruPiket.task', compact('tasks'));
-}
+        return view('guruPiket.task', compact('tasks'));
+    }
 
     public function absen($id)
     {

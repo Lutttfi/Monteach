@@ -54,7 +54,6 @@ class KonfirmasiSiswaController extends Controller
             ->where('kelas', $absen->kelas)
             ->where('tanggal_tugas', $absen->tanggal)
             ->update(['status' => 'completed']);
-            // $task->update(['status' => 'completed']);
 
         return redirect()->back()->with('success', 'Absen berhasil dikonfirmasi!');
     }

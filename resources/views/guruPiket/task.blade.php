@@ -31,9 +31,13 @@
                     <td>{{ ucfirst($task->status) }}</td>
                     <td>
                         @if ($task->status == 'pending')
-                        <a href="{{ route('guruPiket.absen', $task->id) }}" class="btn btn-success btn-sm">Absen</a>
-                        @else
-                        <button class="btn btn-secondary btn-sm" disabled>Sudah Dikerjakan</button>
+                        <a href="{{ route('guruPiket.absen', $task->id) }}" class="btn btn-primary">Absen</a>
+                        @elseif ($task->status == 'in_progress')
+                        <button class="btn btn-warning" disabled>Dalam Proses</button>
+                        @elseif ($task->status == 'completed')
+                        <button class="btn btn-success" disabled>Sudah Selesai</button>
+                        @elseif ($task->status == 'tidak_absen')
+                        <button class="btn btn-danger" disabled>Tidak Absen</button>
                         @endif
                     </td>
                 </tr>
