@@ -18,7 +18,7 @@ class TaskGuruPiketController extends Controller
         // Ambil task yang ditugaskan ke guru piket yang sedang login
         $tasks = Task::where('guru_id', Auth::id())
         ->whereDate('tanggal_tugas', now()->toDateString()) // ✅ Panggil sebelum get()
-        ->get();
+        ->paginate(10);
 
         return view('guruPiket.task', compact('tasks'));
     }

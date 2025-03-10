@@ -13,6 +13,7 @@ class TaskAdminController extends Controller
 {
     public function index()
     {
+        $this->cekDanUpdateTidakDiabsen();
         $tasks = Task::with('guru')->paginate(5); // Ambil semua task dengan data guru
         return view('admin.task.index', compact('tasks'));
     }
