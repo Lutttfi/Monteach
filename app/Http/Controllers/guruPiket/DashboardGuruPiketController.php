@@ -4,7 +4,7 @@ namespace App\Http\Controllers\guruPiket;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\JadwalPiket;
+use App\Models\Task;
 use Carbon\Carbon;
 
 class DashboardGuruPiketController extends Controller
@@ -18,17 +18,22 @@ class DashboardGuruPiketController extends Controller
             'Wednesday' => 'Rabu',
             'Thursday' => 'Kamis',
             'Friday' => 'Jumat',
-            'Saturday' => 'Sabtu'
+            'Saturday' => 'Sabtu',
         ];
 
-        $hariSekarang = Carbon::now()->format('l'); 
-        $hariBesok = Carbon::now()->addDay()->format('l');
+        // Mengambil tanggal sekarang dan besok
+        $tanggalSekarang = Carbon::now()->toDateString(); // Format: YYYY-MM-DD
+        $tanggalBesok = Carbon::tomorrow()->toDateString(); // Format: YYYY-MM-DD
 
-        $hariIni = $hariIndo[$hariSekarang]; 
+        // Mengambil nama hari dalam bahasa Indonesia
+        $hariSekarang = Carbon::now()->format('l');
+        $hariBesok = Carbon::tomorrow()->format('l');
+        $hariIni = $hariIndo[$hariSekarang];
         $besok = $hariIndo[$hariBesok];
 
-        $jadwalHariIni = JadwalPiket::where('hari', $hariIni)->get();
-        $jadwalBesok = JadwalPiket::where('hari', $besok)->get();
+        // Mengambil jadwal piket berdasarkan tanggal sekarang dan besok dari tabel 'tasks'
+        $jadwalHariIni = Task::whereDate('tanggal_tugas', $tanggalSekarang)->get();
+        $jadwalBesok = Task::whereDate('tanggal_tugas', $tanggalBesok)->get();
 
         return view('guruPiket.dashboard', compact('jadwalHariIni', 'jadwalBesok', 'hariIni', 'besok'));
     }

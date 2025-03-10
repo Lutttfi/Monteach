@@ -20,6 +20,6 @@ class Task extends Model
 
     public function guru()
     {
-        return $this->belongsTo(User::class, 'guru_id');
+        return $this->belongsTo(User::class, 'guru_id', 'id');
     }
 }
