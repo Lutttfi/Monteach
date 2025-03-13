@@ -82,7 +82,7 @@
     <!-- Sidebar Start -->
     <nav class="sidebar text-white">
         <div style="padding-bottom: 30px; position:center;">
-            <img src="{{ asset('foto/logo.png'') }}" alt="logo" style="width: 150px; margin-left:23px;">
+            <img src="{{ asset('foto/logo.png') }}" alt="logo" style="width: 150px; margin-left:23px;">
         </div>
         <ul class="nav flex-column">
             <li class="nav-item mb-2">
