@@ -33,6 +33,15 @@
         </div>
     </form>
 
+    <!-- Form Export Excel -->
+    <form action="{{ route('admin.recap.export') }}" method="GET">
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-success">Export Excel</button>
+            </div>
+        </div>
+    </form>
+
     <!-- Tabel Rekap -->
     <div class="table-responsive">
         <table class="table table-bordered text-center">
@@ -42,7 +51,7 @@
                     <th>Nama Guru</th>
                     <th>Jumlah Hadir</th>
                     <th>Jumlah Tidak Hadir</th>
-                    <th>Tidak Diabsen oleh Guru Piket</th>
+                    {{-- <th>Tidak Diabsen oleh Guru Piket</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -52,7 +61,7 @@
                     <td>{{ $rekap->guru->nama }}</td>
                     <td>{{ $rekap->jumlah_hadir }}</td>
                     <td>{{ $rekap->jumlah_tidak_hadir }}</td>
-                    <td>{{ $rekap->tidak_diabsen }}</td>
+                    {{-- <td>{{ $rekap->tidak_diabsen }}</td> --}}
                 </tr>
                 @endforeach
             </tbody>

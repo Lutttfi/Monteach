@@ -69,6 +69,7 @@ Route::middleware('auth')->group(function () {
 
         // Route untuk halaman recap
         Route::get('/recap', [RecapAdminController::class, 'index'])->name('recap');
+        Route::get('recap/export', [RecapAdminController::class, 'exportRekap'])->name('recap.export');  
 
         // Route untuk halaman manage user
         Route::get('/pengguna', [ManageUserAdminController::class, 'index'])->name('manageUser.index');

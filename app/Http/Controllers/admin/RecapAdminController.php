@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rekap;
+use App\Exports\RekapExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RecapAdminController extends Controller
 {
@@ -25,6 +27,12 @@ class RecapAdminController extends Controller
             ->paginate(10);
     
         return view('admin.recap', compact('rekaps', 'bulanList', 'tahunList'));
+    }
+
+    public function exportRekap()
+    {
+         // Export file Excel dengan nama "rekap.xlsx"
+        return Excel::download(new RekapExport, 'rekap_kehadiran_guru.xlsx');
     }
     
 }
