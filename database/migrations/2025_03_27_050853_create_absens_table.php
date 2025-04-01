@@ -16,11 +16,12 @@ return new class extends Migration
             $table->foreignId('guru_pengajar_id')->constrained('gurus')->onDelete('cascade'); // Guru yang mengajar di kelas
             $table->foreignId('guru_piket_id')->constrained('users')->onDelete('cascade'); // Guru Piket yang absen
             $table->foreignId('siswa_id')->constrained('users')->onDelete('cascade'); // Siswa yang mengkonfirmasi
+            $table->foreignId('mapel_id')->nullable()->constrained('mapels')->onDelete('set null'); // Mapel yang diajarkan
             $table->string('kelas');
             $table->date('tanggal');
             $table->time('jam');
             $table->enum('status', ['pending', 'confirmed'])->default('pending');
-            $table->enum('keterangan', ['hadir', 'tidak_hadir']);
+            $table->enum('keterangan', ['hadir', 'izin', 'sakit', 'tanpa_keterangan'])->default('tanpa_keterangan');
             $table->timestamps();
         });
     }

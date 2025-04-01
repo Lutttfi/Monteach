@@ -9,6 +9,7 @@ use App\Models\Absen;
 use App\Models\Guru;
 use App\Models\User;
 use App\Models\Rekap;
+use App\Models\Mapel;
 use Illuminate\Support\Facades\Auth;
 
 class TaskGuruPiketController extends Controller
@@ -26,13 +27,13 @@ class TaskGuruPiketController extends Controller
     public function absen($id)
     {
         $task = Task::findOrFail($id);
-
+        $mapels = Mapel::all();
         $gurus = Guru::all();
         $siswas = User::where('role_id', 3)->get();
 
         $task->update(['status' => 'in_progress']);
 
-        return view('guruPiket.absen', compact('task', 'gurus', 'siswas'));
+        return view('guruPiket.absen', compact('task', 'gurus', 'siswas', 'mapels'));
     }
 
     public function submitAbsen(Request $request, $id)
@@ -42,13 +43,15 @@ class TaskGuruPiketController extends Controller
         $request->validate([
             'guru_pengajar_id' => 'required|exists:gurus,id',
             'siswa_id' => 'required|exists:users,id',
-            'keterangan' => 'required|in:hadir,tidak_hadir',
+            'mapel_id' => 'required|exists:mapels,id',
+            'keterangan' => 'required|in:hadir,izin,sakit,tanpa_keterangan',
         ]);
 
         Absen::create([
             'guru_pengajar_id' => $request->guru_pengajar_id,
             'guru_piket_id' => Auth::id(),
             'siswa_id' => $request->siswa_id,
+            'mapel_id' => $request->mapel_id,
             'kelas' => $task->kelas,
             'tanggal' => now()->toDateString(),
             'jam' => now()->format('H:i'),

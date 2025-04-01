@@ -13,6 +13,7 @@ class Absen extends Model
         'guru_pengajar_id',
         'guru_piket_id',
         'siswa_id',
+        'mapel_id',
         'kelas',
         'tanggal',
         'jam',
@@ -34,4 +35,10 @@ class Absen extends Model
     {
         return $this->belongsTo(User::class, 'siswa_id');
     }
+
+    public function mapel()
+    {
+        return $this->belongsTo(Mapel::class, 'mapel_id');
+    }
+    
 }

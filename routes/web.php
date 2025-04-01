@@ -24,6 +24,7 @@ use App\Http\Controllers\guruPiket\TeacherGuruPiketController;
 use App\Http\Controllers\guruPiket\DashboardGuruPiketController;
 use App\Http\Controllers\guruPiket\PicketTeacherGuruPiketController;
 use App\Http\Controllers\guruPiket\RecapGuruPiketController;
+use App\Http\Controllers\admin\MapelController;
 
 
 // Redirect default ke halaman login jika belum login
@@ -86,6 +87,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/role/{role}/edit', [RoleAdminController::class, 'edit'])->name('role.edit');
         Route::put('/role/{role}', [RoleAdminController::class, 'update'])->name('role.update');
         Route::delete('/role/{role}', [RoleAdminController::class, 'destroy'])->name('role.destroy');
+
+        Route::resource('mapel', MapelController::class);
     });
 
     Route::prefix('guru')->name('guru.')->group(function () {
@@ -94,6 +97,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/teacher', [TeacherGuruController::class, 'index'])->name('teacher');
         Route::get('/picketTeacher', [PicketTeacherGuruController::class, 'index'])->name('picketTeacher');
         Route::get('/recap', [RecapGuruController::class, 'index'])->name('recap');
+        Route::get('recap/export', [RecapGuruController::class, 'exportRekap'])->name('recap.export');  
     });
 
     Route::prefix('guruPiket')->name('guruPiket.')->group(function () {
@@ -105,6 +109,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/teacher', [TeacherGuruPiketController::class, 'index'])->name('teacher');
         Route::get('/picketTeacher', [PicketTeacherGuruPiketController::class, 'index'])->name('picketTeacher');
         Route::get('/recap', [RecapGuruPiketController::class, 'index'])->name('recap');
+        Route::get('recap/export', [RecapGuruPiketController::class, 'exportRekap'])->name('recap.export');  
     });
 
     Route::prefix('siswa')->name('siswa.')->group(function () {

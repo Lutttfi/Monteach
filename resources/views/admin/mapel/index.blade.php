@@ -1,0 +1,44 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container mt-4">
+    <h3 class="py-3">Daftar Mata Pelajaran</h3>
+    <a href="{{ route('admin.mapel.create') }}" class="btn btn-secondary mb-3">Tambah Mapel</a>
+
+    @if(session('success'))
+        <div id="alert-success" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    <div class="table-responsive">
+        <table class="table table-bordered text-center" style="border-radius: 10px; overflow: hidden;">
+            <thead style="background-color: #009D12; color: white;">
+                <tr>
+                    <th style="width:10%; border-top-left-radius: 10px;">No</th>
+                    <th style="width: 43%;">Nama Mapel</th>
+                    <th style="border-top-right-radius: 10px;">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($mapels as $mapel)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td class="align-middle">{{ $mapel->nama_mapel }}</td>
+                    <td class="align-middle">
+                        <a href="{{ route('admin.mapel.edit', $mapel->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <form action="{{ route('admin.mapel.destroy', $mapel->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Hapus mapel ini?')">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+@endsection

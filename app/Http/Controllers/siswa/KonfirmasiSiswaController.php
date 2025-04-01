@@ -46,6 +46,7 @@ class KonfirmasiSiswaController extends Controller
                 'tidak_diabsen' => 0,
                 'bulan' => $bulan,
                 'tahun' => $tahun,
+                'kelas' => $absen->kelas,
             ]);
         }
 

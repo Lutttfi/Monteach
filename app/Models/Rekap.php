@@ -22,4 +22,15 @@ class Rekap extends Model
     {
         return $this->belongsTo(Guru::class, 'guru_id');
     }
+    
+    public function absenTidakHadir()
+    {
+        return $this->hasMany(Absen::class, 'guru_pengajar_id', 'guru_id')
+            ->whereIn('keterangan', ['sakit', 'izin', 'tanpa_keterangan']);
+    }
+
+    public function mapel()
+    {
+        return $this->belongsTo(Mapel::class, 'mapel_id');
+    }
 }

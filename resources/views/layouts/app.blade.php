@@ -116,6 +116,12 @@
     </a>
 </li>
 <li class="nav-item mb-2">
+    <a class="nav-link {{ request()->routeIs('admin.mapel.*') ? 'active' : '' }}" href="{{ route('admin.mapel.index') }}">
+        <span class="iconify" data-icon="mdi:book" data-width="22"></span>
+        Mapel
+    </a>
+</li>
+<li class="nav-item mb-2">
     <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#manageUserDropdown" aria-expanded="false" aria-controls="manageUserDropdown">
         <span class="iconify" data-icon="tabler:settings" data-width="22"></span>
         Pengguna
