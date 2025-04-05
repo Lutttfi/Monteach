@@ -29,7 +29,7 @@ use App\Http\Controllers\admin\MapelController;
 
 // Redirect default ke halaman login jika belum login
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect('/login')->route('login');
 });
 
 // Route untuk halaman login
@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function () {
 
         // Route untuk halaman recap
         Route::get('/recap', [RecapAdminController::class, 'index'])->name('recap');
-        Route::get('recap/export', [RecapAdminController::class, 'exportRekap'])->name('recap.export');  
+        Route::get('recap/export', [RecapAdminController::class, 'exportRekap'])->name('recap.export');
 
         // Route untuk halaman manage user
         Route::get('/pengguna', [ManageUserAdminController::class, 'index'])->name('manageUser.index');
@@ -97,7 +97,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/teacher', [TeacherGuruController::class, 'index'])->name('teacher');
         Route::get('/picketTeacher', [PicketTeacherGuruController::class, 'index'])->name('picketTeacher');
         Route::get('/recap', [RecapGuruController::class, 'index'])->name('recap');
-        Route::get('recap/export', [RecapGuruController::class, 'exportRekap'])->name('recap.export');  
     });
 
     Route::prefix('guruPiket')->name('guruPiket.')->group(function () {
@@ -109,7 +108,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/teacher', [TeacherGuruPiketController::class, 'index'])->name('teacher');
         Route::get('/picketTeacher', [PicketTeacherGuruPiketController::class, 'index'])->name('picketTeacher');
         Route::get('/recap', [RecapGuruPiketController::class, 'index'])->name('recap');
-        Route::get('recap/export', [RecapGuruPiketController::class, 'exportRekap'])->name('recap.export');  
     });
 
     Route::prefix('siswa')->name('siswa.')->group(function () {

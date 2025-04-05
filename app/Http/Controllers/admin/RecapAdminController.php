@@ -35,10 +35,13 @@ class RecapAdminController extends Controller
 }
 
     
-    public function exportRekap()
-    {
-         // Export file Excel dengan nama "rekap.xlsx"
-        return Excel::download(new RekapExport, 'rekap_kehadiran_guru.xlsx');
-    }
+public function exportRekap(Request $request)
+{
+    $bulan = $request->input('bulan', now()->format('F'));
+    $tahun = $request->input('tahun', now()->year);
+
+    return Excel::download(new RekapExport($bulan, $tahun), 'rekap_kehadiran_guru.xlsx');
+}
+
     
 }

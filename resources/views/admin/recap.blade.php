@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-4">
                 <select name="bulan" class="form-control">
-                    <option value="">-- Pilih Bulan --</option>
+                <option value="{{ now()->format('F') }}">{{ now()->format('F') }}</option>
                     @foreach ($bulanList as $b)
                     <option value="{{ $b }}" {{ request('bulan') == $b ? 'selected' : '' }}>
                         {{ $b }}
@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-3">
                 <select name="tahun" class="form-control">
-                    <option value="">-- Pilih Tahun --</option>
+                <option value="{{ now()->year }}">{{ now()->year }}</option>
                     @foreach ($tahunList as $t)
                     <option value="{{ $t }}" {{ request('tahun') == $t ? 'selected' : '' }}>
                         {{ $t }}
@@ -35,12 +35,16 @@
 
     <!-- Form Export Excel -->
     <form action="{{ route('admin.recap.export') }}" method="GET">
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-success w-100">Export Excel</button>
-            </div>
+    <input type="hidden" name="bulan" value="{{ request('bulan', now()->format('F')) }}">
+    <input type="hidden" name="tahun" value="{{ request('tahun', now()->year) }}">
+    
+    <div class="row mb-3">
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-success w-100">Export Excel</button>
         </div>
-    </form>
+    </div>
+</form>
+
 
     <!-- Tabel Rekap -->
     <div class="table-responsive">

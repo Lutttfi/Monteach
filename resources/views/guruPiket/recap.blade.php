@@ -33,14 +33,6 @@
         </div>
     </form>
 
-    <!-- Form Export Excel -->
-    <!-- <form action="{{ route('guruPiket.recap.export') }}" method="GET">
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-success w-100">Export Excel</button>
-            </div>
-        </div>
-    </form> -->
 
     <!-- Tabel Rekap -->
     <div class="table-responsive">

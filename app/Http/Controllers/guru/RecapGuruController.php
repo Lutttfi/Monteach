@@ -35,10 +35,6 @@ class RecapGuruController extends Controller
 }
 
     
-    public function exportRekap()
-    {
-         // Export file Excel dengan nama "rekap.xlsx"
-        return Excel::download(new RekapExport, 'rekap_kehadiran_guru.xlsx');
-    }
+
     
 }

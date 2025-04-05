@@ -34,11 +34,5 @@ class RecapGuruPiketController extends Controller
     return view('guruPiket.recap', compact('rekaps', 'bulanList', 'tahunList'));
 }
 
-    
-    public function exportRekap()
-    {
-         // Export file Excel dengan nama "rekap.xlsx"
-        return Excel::download(new RekapExport, 'rekap_kehadiran_guru.xlsx');
-    }
-    
+
 }
