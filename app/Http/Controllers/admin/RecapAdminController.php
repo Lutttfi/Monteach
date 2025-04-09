@@ -10,38 +10,43 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class RecapAdminController extends Controller
 {
+    // Tampilkan halaman rekap
     public function index(Request $request)
-{
-    // Ambil daftar bulan dan tahun yang tersedia
-    $bulanList = Rekap::select('bulan')->distinct()->pluck('bulan');
-    $tahunList = Rekap::select('tahun')->distinct()->pluck('tahun');
+    {
+        // Ambil daftar bulan & tahun unik dari DB
+        $bulanList = Rekap::select('bulan')->distinct()->pluck('bulan');
+        $tahunList = Rekap::select('tahun')->distinct()->pluck('tahun');
 
-    // Ambil bulan dan tahun yang dipilih, default ke bulan ini
-    $bulan = $request->bulan ?? now()->format('F');
-    $tahun = $request->tahun ?? now()->year;
+        // Ambil filter dari request (default: bulan & tahun sekarang)
+        $bulan = trim(ucfirst(strtolower($request->get('bulan', now()->format('F')))));
+        $tahun = $request->get('tahun', now()->year);
 
-    // Ambil data rekap dengan data ketidakhadiran yang lengkap
-    $rekaps = Rekap::with(['guru', 'absenTidakHadir.mapel'])
-    ->where('bulan', $bulan)
-    ->where('tahun', $tahun)
-    ->withCount([
-        'absenTidakHadir as jumlah_tidak_hadir' => function ($query) {
-            $query->whereIn('keterangan', ['sakit', 'izin', 'tanpa_keterangan']);
-        }
-    ])
-    ->paginate(10);
+        // Query data rekap berdasarkan bulan & tahun
+        $rekaps = Rekap::with(['guru', 'absenTidakHadir.mapel'])
+            ->whereRaw('LOWER(bulan) = ?', [strtolower($bulan)])
+            ->where('tahun', $tahun)
+            ->withCount([
+                'absenTidakHadir as jumlah_tidak_hadir' => function ($query) {
+                    $query->where(function ($q) {
+                        $q->whereRaw('LOWER(TRIM(keterangan)) LIKE ?', ['%izin%'])
+                          ->orWhereRaw('LOWER(TRIM(keterangan)) LIKE ?', ['%sakit%'])
+                          ->orWhereRaw('LOWER(TRIM(keterangan)) LIKE ?', ['%tanpa_keterangan%']);
+                    });
+                }
+            ])
+            ->paginate(10);
 
-    return view('admin.recap', compact('rekaps', 'bulanList', 'tahunList'));
-}
 
-    
-public function exportRekap(Request $request)
-{
-    $bulan = $request->input('bulan', now()->format('F'));
-    $tahun = $request->input('tahun', now()->year);
+        // Kirim ke view
+        return view('admin.recap', compact('rekaps', 'bulanList', 'tahunList', 'bulan', 'tahun'));
+    }
 
-    return Excel::download(new RekapExport($bulan, $tahun), 'rekap_kehadiran_guru.xlsx');
-}
+    // Export ke Excel
+    public function exportRekap(Request $request)
+    {
+        $bulan = ucfirst(strtolower($request->input('bulan', now()->format('F'))));
+        $tahun = $request->input('tahun', now()->year);
 
-    
+        return Excel::download(new RekapExport($bulan, $tahun), 'rekap_' . $bulan . '_' . $tahun . '.xlsx');
+    }
 }

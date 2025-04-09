@@ -9,9 +9,8 @@
         <div class="row">
             <div class="col-md-4">
                 <select name="bulan" class="form-control">
-                <option value="{{ now()->format('F') }}">{{ now()->format('F') }}</option>
                     @foreach ($bulanList as $b)
-                    <option value="{{ $b }}" {{ request('bulan') == $b ? 'selected' : '' }}>
+                    <option value="{{ $b }}" {{ request('bulan', now()->format('F')) == $b ? 'selected' : '' }}>
                         {{ $b }}
                     </option>
                     @endforeach
@@ -19,10 +18,9 @@
             </div>
             <div class="col-md-3">
                 <select name="tahun" class="form-control">
-                <option value="{{ now()->year }}">{{ now()->year }}</option>
                     @foreach ($tahunList as $t)
-                    <option value="{{ $t }}" {{ request('tahun') == $t ? 'selected' : '' }}>
-                        {{ $t }}
+                    <option value="{{ now()->year }}" {{ request('tahun', now()->year) == now()->year ? 'selected' : '' }}>
+                        {{ now()->year }}
                     </option>
                     @endforeach
                 </select>
@@ -35,15 +33,15 @@
 
     <!-- Form Export Excel -->
     <form action="{{ route('admin.recap.export') }}" method="GET">
-    <input type="hidden" name="bulan" value="{{ request('bulan', now()->format('F')) }}">
-    <input type="hidden" name="tahun" value="{{ request('tahun', now()->year) }}">
-    
-    <div class="row mb-3">
-        <div class="col-md-2">
-            <button type="submit" class="btn btn-success w-100">Export Excel</button>
+        <input type="hidden" name="bulan" value="{{ request('bulan', now()->format('F')) }}">
+        <input type="hidden" name="tahun" value="{{ request('tahun', now()->year) }}">
+
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-success w-100">Export Excel</button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
 
 
     <!-- Tabel Rekap -->
