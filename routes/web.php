@@ -29,7 +29,7 @@ use App\Http\Controllers\admin\MapelController;
 
 // Redirect default ke halaman login jika belum login
 Route::get('/', function () {
-    return redirect('/login')->route('login');
+    return redirect()->route('login');
 });
 
 // Route untuk halaman login
