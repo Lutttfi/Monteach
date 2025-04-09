@@ -56,7 +56,7 @@
                     <td>{{ $rekap->jumlah_tidak_hadir }}</td>
                     <td>
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $rekap->id }}">
-                            Lihat Detail
+                            Detail
                         </button>
 
                         <!-- Modal Detail -->
@@ -74,7 +74,7 @@
                                         <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
                                             @if ($rekap->absenTidakHadir->count() > 0)
                                             <table class="table table-bordered text-center">
-                                                <thead class="table-light">
+                                                <thead class="table-light" style="font-size: 5px;">
                                                     <tr>
                                                         <th>Tanggal</th>
                                                         <th>Mata Pelajaran</th>
