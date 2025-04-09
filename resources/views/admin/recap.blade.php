@@ -68,7 +68,7 @@
                     <td>{{ $rekap->jumlah_tidak_hadir }}</td>
                     <td>
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $rekap->id }}">
-                            Lihat Detail
+                        Detail
                         </button>
 
                         <!-- Modal Detail -->
