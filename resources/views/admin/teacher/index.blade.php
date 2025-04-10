@@ -39,7 +39,7 @@
             </table>
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <span>Showing {{ $guru->firstItem() }} to {{ $guru->lastItem() }} of {{ $guru->total() }} results</span>
+                    <span>Showing {{ $guru->lastItem() }} of {{ $guru->total() }} results</span>
                 </div>
                 <div>
                     {{ $guru->links('pagination::bootstrap-4') }} <!-- Menambahkan pagination style Bootstrap -->

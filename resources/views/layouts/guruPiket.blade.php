@@ -80,6 +80,19 @@
             display: none;
         }
 
+        .table thead th {
+            background-color: #009D12;
+            color: rgb(255, 255, 255);
+        }
+
+        .table tbody tr {
+            text-align: center;
+        }
+
+        /* .table-guru-piket thead th {
+            background-color: blue;
+        } */
+
         @media (max-width: 991.98px) {
             .sidebar {
                 left: -260px;
@@ -117,9 +130,9 @@
             </button>
             <span class="navbar-brand ms-auto me-2">
                 @auth
-                    {{ Auth::user()->username }}
+                {{ Auth::user()->username }}
                 @else
-                    Guru
+                Guru
                 @endauth
             </span>
             <div class="dropdown">

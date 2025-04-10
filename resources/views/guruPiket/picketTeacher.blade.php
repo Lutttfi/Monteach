@@ -5,8 +5,8 @@
         <h3 class="py-3">Daftar Guru Piket</h3>
 
         <!-- Tabel Guru Piket -->
-        <table class="table table-bordered">
-            <thead style="background-color:  #009D12; color: white;">
+        <table class="table table-bordered table-guru-piket">
+            <thead style="background-color:  #009D12; color: white; text-align: center;">
                 <tr>
                     <th style="width:10%; border-top-left-radius: 10px;">No</th>
                     <th style="width: 43%;">Nama</th>

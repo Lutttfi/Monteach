@@ -18,7 +18,6 @@
                     <th>Nama Guru</th>
                     <th>Kelas</th>
                     <th>Tanggal</th>
-                    <th>Jam</th>
                     <th>Keterangan</th>
                     <th>Aksi</th>
                 </tr>
@@ -30,7 +29,6 @@
                         <td>{{ $absen->guru->nama ?? 'Tidak Diketahui' }}</td>
                         <td>{{ $absen->kelas }}</td>
                         <td>{{ \Carbon\Carbon::parse($absen->tanggal)->format('d M Y') }}</td>
-                        <td>{{ \Carbon\Carbon::parse($absen->jam)->format('H:i') }}</td>
                         <td>
                             <span class="badge bg-{{ $absen->keterangan == 'hadir' ? 'success' : 'danger' }}">
                                 {{ ucfirst($absen->keterangan) }}

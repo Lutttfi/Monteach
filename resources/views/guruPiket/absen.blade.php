@@ -52,7 +52,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Kirim Absen</button>
-        <a href="{{ route('guruPiket.task') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 @endsection

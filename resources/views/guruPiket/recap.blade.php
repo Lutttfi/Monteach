@@ -37,7 +37,7 @@
     <!-- Tabel Rekap -->
     <div class="table-responsive">
         <table class="table table-bordered text-center">
-            <thead style="background-color: #009D12; color: white;">
+            <thead>
                 <tr>
                     <th>No</th>
                     <th>Nama Guru</th>
@@ -74,7 +74,7 @@
                                         <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
                                             @if ($rekap->absenTidakHadir->count() > 0)
                                             <table class="table table-bordered text-center">
-                                                <thead class="table-light" style="font-size: 5px;">
+                                                <thead class="table-light">
                                                     <tr>
                                                         <th>Tanggal</th>
                                                         <th>Mata Pelajaran</th>

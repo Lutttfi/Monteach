@@ -1,4 +1,4 @@
-@extends('layouts.guru')
+@extends('layouts.siswa')
 
 @section('content')
     <div class="container mt-4" style="padding-bottom: 0.5px;">
