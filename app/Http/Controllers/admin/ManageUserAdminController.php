@@ -13,7 +13,9 @@ class ManageUserAdminController extends Controller
 {
     public function index()
     {
-        $users = User::with('role')->paginate(5);
+        $users = User::with('role')
+        ->where('role_id', '!=', 1) // exclude admin
+        ->paginate(5);
 
         return view('admin.manageUser.index', compact('users'));
     }
@@ -25,27 +27,35 @@ class ManageUserAdminController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'username' => 'required|unique:users,username', // tambahkan validasi unique agar username tidak duplikat
-            'password' => 'required|min:6',
-            'jabatan' => 'required|exists:roles,id', // validasi sesuai dengan ID role yang ada di database
-        ]);
-    
-        // Simpan data ke database
-        $user = User::create([
-            'username' => $request->username,
-            'password' => Hash::make($request->password), // Hash password sebelum menyimpan
-            'role_id' => $request->jabatan, // Simpan role sesuai dengan ID yang dipilih
-        ]);
+{
+    // Bersihkan tanda petik dari username
+    $usernameBersih = str_replace(["'", '"'], '', $request->username);
 
-        // Trigger event Registered setelah user berhasil ditambahkan
-        event(new Registered($user));
-    
-        // Redirect dengan pesan sukses
-        return redirect()->route('admin.manageUser.index')->with('success', 'Pengguna berhasil ditambahkan!');
-    }
+    // Tambahkan usernameBersih ke dalam data yang akan divalidasi
+    $request->merge(['username' => $usernameBersih]);
+
+    // Validasi input setelah username dibersihkan
+    $request->validate([
+        'username' => 'required|unique:users,username',
+        'password' => 'required|min:6',
+        'jabatan' => 'required|exists:roles,id',
+    ], [
+        'username.unique' => 'Nama pengguna sudah terpakai. Pilih username lain.',
+    ]);
+
+    // Simpan ke database
+    $user = User::create([
+        'username' => $usernameBersih,
+        'password' => Hash::make($request->password),
+        'role_id' => $request->jabatan,
+    ]);
+
+    event(new Registered($user));
+
+    return redirect()->route('admin.manageUser.index')->with('success', 'Pengguna berhasil ditambahkan!');
+}
+
+
 
     public function edit($id)
     {
@@ -60,20 +70,22 @@ class ManageUserAdminController extends Controller
         $request->validate([
             'username' => 'required|unique:users,username,' . $id,
             'jabatan' => 'required|exists:roles,id',
-        ]);        
+        ]);
+
+        $usernameBersih = str_replace(["'", '"'], '', $request->username);
+
         $user = User::findOrFail($id);
         $user->update([
-            'username' => $request->username,
+            'username' => $usernameBersih,
             'role_id' => $request->jabatan,
         ]);
 
         return redirect()->route('admin.manageUser.index')->with('success', 'Pengguna berhasil diperbarui!');
-}
+    }
 
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
         return redirect()->route('admin.manageUser.index')->with('success', 'Pengguna berhasil dihapus!');
     }
-
 }

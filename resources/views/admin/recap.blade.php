@@ -53,7 +53,7 @@
                     <th>Nama Guru</th>
                     <th>Jumlah Hadir</th>
                     <th>Jumlah Tidak Hadir</th>
-                    <th>Detail</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,7 +66,7 @@
                     <td>{{ $rekap->jumlah_tidak_hadir }}</td>
                     <td>
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $rekap->id }}">
-                        Detail
+                        Lihat
                         </button>
 
                         <!-- Modal Detail -->

@@ -10,7 +10,13 @@
                 @method('PUT')
                 <div class="mb-3">
                     <label for="nama" class="form-label text-white">Nama Guru :</label>
-                    <input type="text" class="form-control" name="nama" value="{{ $guru->nama }}" required>
+                    <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama', $guru->nama) }}" required>
+
+                    @error('nama')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
                 <a href="{{ route('admin.teacher.index') }}" class="btn btn-danger">Batal</a>

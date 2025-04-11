@@ -9,8 +9,15 @@
                 @csrf
                 <div class="mb-3">
                     <label for="nama" class="form-label text-white">Nama Guru :</label>
-                    <input type="text" class="form-control" name="nama" required>
+                    <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" required>
+
+                    @error('nama')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
+
                 <button type="submit" class="btn btn-primary">Tambah</button>
                 <a href="{{ route('admin.teacher.index') }}" class="btn btn-danger">Kembali</a>
             </form>

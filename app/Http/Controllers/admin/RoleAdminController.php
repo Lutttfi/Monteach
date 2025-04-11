@@ -26,8 +26,10 @@ class RoleAdminController extends Controller
             'jabatan' => 'required',
         ]);
 
+        $jabatanBersih = str_replace(["'", '"'], '', $request->jabatan);
+
         $role = Role::create([
-            'name' => $request->jabatan,
+            'name' => $jabatanBersih,
         ]);
 
         return redirect()->route('admin.role.index')->with('success', 'Jabatan berhasil ditambahkan!');
@@ -48,8 +50,10 @@ class RoleAdminController extends Controller
 
         $role = Role::findOrFail($id);
 
+        $jabatanBersih = str_replace(["'", '"'], '', $request->jabatan);
+
         $role->update([
-            'name' => $request->jabatan,
+            'name' => $jabatanBersih,
         ]);
 
         return redirect()->route('admin.role.index')->with('success', 'Jabatan berhasil diperbarui!');

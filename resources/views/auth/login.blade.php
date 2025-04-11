@@ -1,209 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - Monteach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: white;
             margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #56ab2f, #a8e063);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .login-container {
-            background: #50B83B;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 360px;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 300px;
+            opacity: 0;
+            animation: fadeUp 1s ease-out forwards;
+            animation-delay: 0.3s;
         }
 
-        h2 {
-            color: white;
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-container h1 {
             margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex-grow: 1;
-        }
-
-        .form-body {
-            flex-grow: 1;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-bottom: 2px solid #ccc;
-            background: transparent;
-            font-size: 16px;
-            outline: none;
-            color: white;
-        }
-
-        input::placeholder {
-            color: white;
-        }
-
-        /* .checkbox-container {
-            display: flex;
-            align-items: center;
+        .login-container p {
+            color: #666;
+            margin-bottom: 25px;
             font-size: 14px;
-            gap: 10px;
-            justify-content: flex-start;
-            color: white;
-            margin: 10px 0;
         }
 
-        .checkbox-container input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-        } */
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
 
-        button {
+        .input-group input {
             width: 100%;
-            padding: 10px;
-            background: #ccc;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+            padding: 12px 12px 12px 40px;
+            border: 1.5px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
         }
 
-        button:hover {
-            background: #bbb;
+        .input-group input:focus {
+            border-color: #50B83B;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
         }
 
         .error {
-            color: red;
+            background: #ffeded;
+            color: #ff3f3f;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 20px;
             font-size: 14px;
-            margin-bottom: 10px;
         }
 
-        /* Responsif Tablet */
-        @media (max-width: 768px) {
-            .login-container {
-                padding: 20px;
-                max-width: 400px;
-                width: 37%;
-                height: 270px;
-            }
-
-            h2 {
-                font-size: 24px;
-                margin: 8px 0;
-            }
-
-            input {
-                padding: 8px;
-                font-size: 16px;
-            }
-
-            input::placeholder {
-                color: white;
-            }
-
-            button {
-                padding: 9px;
-                font-size: 16px;
-            }
-
-            button:hover {
-                background: #bbb;
-            }
-
-            .error {
-                color: red;
-                font-size: 14px;
-                margin-bottom: 5px;
-            }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #50B83B;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
-        /* Responsif HP */
+        button:hover {
+            background: #40932f;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(1);
+        }
+
         @media (max-width: 480px) {
             .login-container {
-                width: 55%;
-                max-width: 100%;
-                height: 230px;
-                padding: 20px;
+                padding: 30px 20px;
             }
 
-            h2 {
+            .login-container h1 {
                 font-size: 20px;
-                margin: 4px 0;
-            }
-
-            input {
-                padding: 7px;
-                font-size: 14px;
-            }
-
-            input::placeholder {
-                color: white;
             }
 
             button {
-                padding: 8px;
-                font-size: 14px;
-            }
-
-            button:hover {
-                background: #bbb;
-            }
-
-            .error {
-                color: red;
-                font-size: 10px;
-                margin-bottom: 1px;
+                font-size: 15px;
             }
         }
     </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="login-container">
-        <h2>LOGIN</h2>
+        <h1>Aplikasi Monitoring Guru</h1>
+        <p>Silakan login untuk melanjutkan</p>
 
         @if ($errors->any())
-            <p class="error">{{ $errors->first() }}</p>
+            <div class="error">{{ $errors->first() }}</div>
         @endif
 
         <form action="{{ route('login') }}" method="POST">
             @csrf
 
-            <div class="form-body">
-                <input type="text" name="username" placeholder="Masukkan Username..." required>
-                <input type="password" name="password" placeholder="Masukkan Password" required>
-
-                {{-- <div class="checkbox-container">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Ingatkan saya</label>
-                </div> --}}
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username" required>
             </div>
 
-            <button type="submit">Log In</button>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit">Masuk</button>
         </form>
     </div>
 </body>

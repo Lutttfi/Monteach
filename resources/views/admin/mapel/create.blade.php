@@ -9,8 +9,15 @@
                 @csrf
                 <div class="mb-3">
                     <label for="nama_mapel" class="form-label text-white">Nama Mata Pelajaran:</label>
-                    <input type="text" class="form-control w-100" name="nama_mapel" required>
+                    <input type="text" class="form-control w-100" name="nama_mapel" value="{{ old('nama_mapel') }}" required>
+
+                    @if ($errors->has('nama_mapel'))
+                    <div class="text-danger mt-1">
+                        {{ $errors->first('nama_mapel') }}
+                    </div>
+                    @endif
                 </div>
+
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary">Tambah</button>
                     <a href="{{ route('admin.mapel.index') }}" class="btn btn-danger">Kembali</a>

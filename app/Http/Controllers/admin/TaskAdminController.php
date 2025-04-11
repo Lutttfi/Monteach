@@ -43,9 +43,11 @@ class TaskAdminController extends Controller
             'tanggal_tugas' => 'required|date',
         ]);
 
+        $kelasBersih = str_replace(["'", '"'], '', $request->kelas);
+
         Task::create([
             'guru_id' => $request->guru_id,
-            'kelas' => $request->kelas,
+            'kelas' => $kelasBersih,
             'status' => 'pending',
             'tanggal_tugas' => $request->tanggal_tugas,
         ]);
@@ -70,10 +72,12 @@ class TaskAdminController extends Controller
             'tanggal_tugas' => 'required|date',
         ]);
 
+        $kelasBersih = str_replace(["'", '"'], '', $request->kelas);
+
         $task = Task::findOrFail($id);
         $task->update([
             'guru_id' => $request->guru_id,
-            'kelas' => $request->kelas,
+            'kelas' => $kelasBersih,
             'status' => 'pending',
             'tanggal_tugas' => $request->tanggal_tugas,
         ]);

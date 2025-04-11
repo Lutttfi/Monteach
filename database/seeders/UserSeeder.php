@@ -18,30 +18,30 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             [
-                'username' => 'Davis',
+                'username' => 'Admin',
                 'role_id' => $adminRole,
                 'password' => Hash::make('admin123'),
             ],
-            [
-                'username' => 'Dimas',
-                'role_id' => $guruRole,
-                'password' => Hash::make('guru123'),
-            ],
-            [
-                'username' => 'Dandy',
-                'role_id' => $siswaRole,
-                'password' => Hash::make('siswa123'),
-            ],
-            [
-                'username' => 'Rina',
-                'role_id' => $guruPiketRole,
-                'password' => Hash::make('piket123'),
-            ],
-            [
-                'username' => 'Iben',
-                'role_id' => $guruPiketRole,
-                'password' => Hash::make('piket123'),
-            ],
+            // [
+            //     'username' => 'Dimas',
+            //     'role_id' => $guruRole,
+            //     'password' => Hash::make('guru123'),
+            // ],
+            // [
+            //     'username' => 'Dandy',
+            //     'role_id' => $siswaRole,
+            //     'password' => Hash::make('siswa123'),
+            // ],
+            // [
+            //     'username' => 'Rina',
+            //     'role_id' => $guruPiketRole,
+            //     'password' => Hash::make('piket123'),
+            // ],
+            // [
+            //     'username' => 'Iben',
+            //     'role_id' => $guruPiketRole,
+            //     'password' => Hash::make('piket123'),
+            // ],
         ]);
     }
 }

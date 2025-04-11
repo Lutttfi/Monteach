@@ -31,7 +31,9 @@
                     <td>{{ ucfirst($task->status) }}</td>
                     <td>
                         @if ($task->status == 'pending')
-                        <a href="{{ route('guruPiket.absen', $task->id) }}" class="btn btn-primary">Absen</a>
+                        <a href="{{ route('guruPiket.absen', $task->id) }}"
+                            class="btn btn-primary"
+                            onclick="return confirm('Ingin mengabsen sekarang?')">Absen</a>
                         @elseif ($task->status == 'in_progress')
                         <button class="btn btn-warning" disabled>Dalam Proses</button>
                         @elseif ($task->status == 'completed')
