@@ -1,3 +1,4 @@
+
 <h1 align="center">📚 Monteach - Aplikasi Absensi Guru Berbasis Web</h1>
 
 <p align="center">
@@ -15,13 +16,13 @@
 
 ## 📖 Tentang Monteach
 
-**Monteach** adalah sebuah aplikasi berbasis web yang dirancang untuk mempermudah proses absensi guru di sekolah. Sistem ini menggantikan metode manual dengan pendekatan digital yang lebih efisien dan transparan.
+**Monteach** adalah sebuah aplikasi berbasis web yang dirancang untuk mempermudah proses absensi guru di sekolah. Sistem ini menggantikan metode manual dengan pendekatan digital yang lebih efisien dan transparan.  
 
 Sistem ini melibatkan **3 peran pengguna utama**:
 
--   👩‍💼 **Admin**: Menugaskan guru piket dan memantau rekap absensi.
--   👨‍🏫 **Guru Piket**: Mengisi data kehadiran guru berdasarkan tugas.
--   👨‍🎓 **Siswa**: Mengonfirmasi kehadiran guru di kelas.
+- 👩‍💼 **Admin**: Menugaskan guru piket dan memantau rekap absensi.
+- 👨‍🏫 **Guru Piket**: Mengisi data kehadiran guru berdasarkan tugas.
+- 👨‍🎓 **Siswa**: Mengonfirmasi kehadiran guru di kelas.
 
 Data yang tercatat akan secara otomatis direkap dan dapat diekspor dalam format Excel sebagai dokumentasi resmi sekolah.
 
@@ -29,37 +30,44 @@ Data yang tercatat akan secara otomatis direkap dan dapat diekspor dalam format 
 
 ## 🚀 Fitur Utama
 
--   🔐 Login berdasarkan peran (Admin, Guru Piket, Siswa)
--   📝 Penugasan piket guru oleh admin
--   📆 Absensi guru oleh guru piket
--   ✅ Konfirmasi kehadiran oleh siswa
--   📊 Rekap otomatis kehadiran guru
--   📤 Ekspor data absensi ke format Excel
--   📱 Responsif, dapat diakses dari desktop & perangkat mobile
+- 🔐 Login berdasarkan peran (Admin, Guru Piket, Siswa)
+- 📝 Penugasan piket guru oleh admin
+- 📆 Absensi guru oleh guru piket
+- ✅ Konfirmasi kehadiran oleh siswa
+- 📊 Rekap otomatis kehadiran guru
+- 📤 Ekspor data absensi ke format Excel
+- 📱 Responsif, dapat diakses dari desktop & perangkat mobile
 
 ---
 
 ## 🛠️ Teknologi yang Digunakan
 
--   **Laravel 11** – PHP Framework
--   **MySQL** – Sistem Manajemen Basis Data
--   **Blade** – Template Engine Laravel
--   **Bootstrap** – Front-end Framework
--   **JavaScript** – Interaktivitas Halaman
+- **Laravel 11** – PHP Framework
+- **MySQL** – Sistem Manajemen Basis Data
+- **Blade** – Template Engine Laravel
+- **Bootstrap** – Front-end Framework
+- **JavaScript** – Interaktivitas Halaman
 
 ---
 
 ## 🖥️ Persyaratan Sistem
 
--   PHP >= 8.1
--   Composer
--   MySQL
--   Web Server (Artisan/XAMPP)
+- PHP >= 8.1
+- Composer
+- MySQL
+- Web Server (Artisan/XAMPP)
 
 ---
 
+## 🚀 Pengembangan
+Saran pengembangan aplikasi Monteach
+-   **Jadwal Piket Otomatis** 
+-   **Konfirmasi Siswa Menggunakan Foto atau Lokasi** 
+
+---
 ## ⚙️ Cara Instalasi
 
+```bash
 # 1. Clone repository ini
 git clone https://github.com/Lutttfi/Monteach.git
 cd Monteach
@@ -80,13 +88,3 @@ php artisan db:seed --class=UserSeeder
 
 # 6. Jalankan server
 php artisan serve
-
----
-
-## 🚀 Pengembangan
-Saran pengembangan aplikasi Monteach
--   **Jadwal Piket Otomatis** 
--   **Konfirmasi Siswa Menggunakan Foto atau Lokasi** 
-
-
-
