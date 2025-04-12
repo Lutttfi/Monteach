@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/storage/logo.png" width="200" alt="Monteach">
+  <img src="public/storage/logo.jpeg" width="200" alt="Monteach">
 </p>
 
 <h1 align="center">📚 Monteach - Aplikasi Absensi Guru Berbasis Web</h1>
