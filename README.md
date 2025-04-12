@@ -60,7 +60,6 @@ Data yang tercatat akan secara otomatis direkap dan dapat diekspor dalam format 
 
 ## ⚙️ Cara Instalasi
 
-```bash
 # 1. Clone repository ini
 git clone https://github.com/Lutttfi/Monteach.git
 cd Monteach
@@ -85,6 +84,9 @@ php artisan serve
 ---
 
 ## 🚀 Pengembangan
+Saran pengembangan aplikasi Monteach
+-   **Jadwal Piket Otomatis** 
+-   **Konfirmasi Siswa Menggunakan Foto atau Lokasi** 
 
-- **Jadwal Piket Otomatis**
-- **Konfirmasi Siswa Menggunakan Foto atau Lokasi**
+
+
