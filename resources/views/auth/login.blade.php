@@ -1,109 +1,78 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Monteach</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
     <style>
         * {
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #56ab2f, #a8e063);
-            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            animation: fadeIn 1s ease-out;
+            min-height: 100vh;
+            padding-top: 40px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        .logo {
+            width: 230px;
+            margin-bottom: 30px;
         }
 
         .login-container {
             background: white;
-            padding: 40px 30px;
+            padding: 30px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
             text-align: center;
-            opacity: 0;
-            animation: fadeUp 1s ease-out forwards;
-            animation-delay: 0.3s;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .login-container h1 {
-            margin-bottom: 10px;
-            font-size: 24px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .login-container p {
-            color: #666;
+            color: #50B83B;
             margin-bottom: 25px;
-            font-size: 14px;
+            font-weight: 700;
         }
 
-        .input-group {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .input-group input {
+        .form-group {
             width: 100%;
-            padding: 12px 12px 12px 40px;
-            border: 1.5px solid #ccc;
+            margin-bottom: 18px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
             border-radius: 8px;
-            outline: none;
-            transition: border-color 0.3s;
+            font-size: 16px;
         }
 
-        .input-group input:focus {
+        input:focus {
             border-color: #50B83B;
+            outline: none;
         }
 
-        .input-group i {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
+        input::placeholder {
+            color: #999;
         }
 
         .error {
-            background: #ffeded;
-            color: #ff3f3f;
-            padding: 8px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+            color: red;
             font-size: 14px;
+            margin-bottom: 10px;
+            text-align: center;
         }
 
         button {
@@ -111,60 +80,55 @@
             padding: 12px;
             background: #50B83B;
             color: white;
+            font-size: 16px;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
+            transition: background 0.3s;
         }
 
         button:hover {
-            background: #40932f;
-            transform: scale(1.05);
-        }
-
-        button:active {
-            transform: scale(1);
+            background: #3e9631;
         }
 
         @media (max-width: 480px) {
             .login-container {
-                padding: 30px 20px;
+                padding: 25px 20px;
             }
 
-            .login-container h1 {
-                font-size: 20px;
+            h2 {
+                font-size: 22px;
             }
 
+            input,
             button {
                 font-size: 15px;
             }
         }
     </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <!-- Logo di paling atas -->
+    <img src="{{ asset('foto/logo.png') }}" alt="Logo" class="logo" />
+
+    <!-- Kotak login -->
     <div class="login-container">
-        <h1>Aplikasi Monitoring Guru</h1>
-        <p>Silakan login untuk melanjutkan</p>
+        <h2>LOGIN</h2>
 
         @if ($errors->any())
-            <div class="error">{{ $errors->first() }}</div>
+            <p class="error">{{ $errors->first() }}</p>
         @endif
 
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('login') }}" method="POST" style="width: 100%;">
             @csrf
 
-            <div class="input-group">
-                <i class="fas fa-user"></i>
-                <input type="text" name="username" placeholder="Username" required>
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Masukkan Username..." required />
             </div>
 
-            <div class="input-group">
-                <i class="fas fa-lock"></i>
-                <input type="password" name="password" placeholder="Password" required>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Masukkan Password..." required />
             </div>
 
             <button type="submit">Masuk</button>
